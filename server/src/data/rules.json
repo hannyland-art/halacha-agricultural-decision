@@ -1,0 +1,86 @@
+[
+  {
+    "id": 5001,
+    "ruleSetId": 3001,
+    "priority": 1,
+    "conditionsJson": {
+      "all": [
+        { "field": "fruit_tree", "op": "=", "value": false }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "NOT_APPLICABLE",
+      "resultTemplateCode": "ORL_NOT_APPLICABLE"
+    },
+    "description": "If not a fruit tree, Orlah does not apply",
+    "isActive": true
+  },
+  {
+    "id": 5002,
+    "ruleSetId": 3001,
+    "priority": 2,
+    "conditionsJson": {
+      "all": [
+        { "field": "fruit_tree", "op": "=", "value": true },
+        { "field": "transferred", "op": "=", "value": true },
+        { "field": "sustaining_soil_block", "op": "=", "value": "unknown" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "NEEDS_REVIEW",
+      "resultTemplateCode": "ORL_UNCERTAIN_01"
+    },
+    "description": "Transferred plant with unknown sustaining soil block requires review",
+    "isActive": true
+  },
+  {
+    "id": 5003,
+    "ruleSetId": 3001,
+    "priority": 3,
+    "conditionsJson": {
+      "all": [
+        { "field": "fruit_tree", "op": "=", "value": true },
+        { "field": "certainty_level", "op": "=", "value": "low" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "NEEDS_REVIEW",
+      "resultTemplateCode": "ORL_UNCERTAIN_01"
+    },
+    "description": "Low certainty requires review",
+    "isActive": true
+  },
+  {
+    "id": 5004,
+    "ruleSetId": 3001,
+    "priority": 4,
+    "conditionsJson": {
+      "all": [
+        { "field": "fruit_tree", "op": "=", "value": true },
+        { "field": "source_type", "op": "=", "value": "nursery" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "ORLAH_ACTIVE",
+      "resultTemplateCode": "ORL_ACTIVE_01"
+    },
+    "description": "Fruit tree from nursery may still be in Orlah period",
+    "isActive": true
+  },
+  {
+    "id": 5005,
+    "ruleSetId": 3001,
+    "priority": 99,
+    "conditionsJson": {
+      "all": [
+        { "field": "fruit_tree", "op": "=", "value": true }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "PERMITTED",
+      "resultTemplateCode": "ORL_PERMITTED_01"
+    },
+    "description": "Fallback permitted-like result for MVP",
+    "isActive": true
+  }
+]

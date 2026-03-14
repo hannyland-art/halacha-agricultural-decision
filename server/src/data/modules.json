@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "code": "orlah",
+    "name": "עורלה",
+    "description": "בדיקה הלכתית בסיסית לעצי פרי ולשלבי מניין עורלה",
+    "isActive": true
+  },
+  {
+    "id": 2,
+    "code": "kilayim",
+    "name": "כלאיים",
+    "description": "מודול עתידי לבדיקת כלאי אילן וכלאי זרעים",
+    "isActive": false
+  }
+]

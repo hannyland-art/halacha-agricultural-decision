@@ -1,0 +1,131 @@
+.admin-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.admin-page h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.admin-page > p {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: white;
+  border: 1px solid var(--color-border-light);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.admin-nav-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.admin-nav-link.active {
+  background: var(--color-primary-lighter);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Stats Grid */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.admin-stat-card {
+  padding: 20px;
+  text-align: center;
+}
+
+.admin-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.admin-stat-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Admin Tables */
+.admin-table-container {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.admin-table th {
+  text-align: right;
+  padding: 12px 16px;
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-border);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: top;
+}
+
+.admin-table tr:hover td {
+  background: var(--color-bg);
+}
+
+.admin-table code {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  direction: ltr;
+  display: inline-block;
+}
+
+.admin-json-preview {
+  max-width: 300px;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: var(--color-bg);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  max-height: 120px;
+  overflow-y: auto;
+  direction: ltr;
+  text-align: left;
+}

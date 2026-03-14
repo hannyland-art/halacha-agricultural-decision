@@ -1,0 +1,102 @@
+.decision-path {
+  padding: 8px 0;
+}
+
+.dp-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--color-text);
+}
+
+.dp-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dp-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.dp-connector {
+  color: var(--color-text-muted);
+  padding: 8px 0;
+}
+
+.dp-node {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border-light);
+  background: white;
+  transition: var(--transition);
+}
+
+.dp-node:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.dp-node-question {
+  border-color: var(--color-info-light);
+  background: #f8fbff;
+}
+
+.dp-node-question .dp-node-icon {
+  color: var(--color-info);
+}
+
+.dp-node-answer {
+  border-color: var(--color-primary-lighter);
+  background: #f8fdf8;
+}
+
+.dp-node-answer .dp-node-icon {
+  color: var(--color-primary);
+}
+
+.dp-node-result {
+  border-color: var(--color-secondary-light);
+  background: var(--color-warning-light);
+}
+
+.dp-node-result .dp-node-icon {
+  color: var(--color-secondary);
+}
+
+.dp-node-icon {
+  flex-shrink: 0;
+}
+
+.dp-node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dp-node-type {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+}
+
+.dp-node-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.dp-empty {
+  text-align: center;
+  padding: 32px;
+  color: var(--color-text-muted);
+}

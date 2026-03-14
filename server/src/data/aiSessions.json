@@ -1,0 +1,22 @@
+[
+  {
+    "id": 9001,
+    "plantId": 6001,
+    "rawUserText": "קניתי עץ לימון ממשתלה, שתלתי אותו בגינה ואני לא בטוחה אם היה גוש אדמה שמחזיק אותו.",
+    "extractedFieldsJson": {
+      "plant_type": "lemon",
+      "source_type": "nursery",
+      "growth_location": "garden",
+      "transferred": true,
+      "sustaining_soil_block": "unknown"
+    },
+    "confidenceJson": {
+      "plant_type": 0.95,
+      "source_type": 0.98,
+      "growth_location": 0.9,
+      "transferred": 0.88,
+      "sustaining_soil_block": 0.7
+    },
+    "createdAt": "2026-03-10T10:01:00Z"
+  }
+]

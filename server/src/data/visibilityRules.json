@@ -1,0 +1,22 @@
+[
+  {
+    "id": 2001,
+    "questionId": 106,
+    "expressionJson": {
+      "all": [
+        { "field": "growth_location", "op": "in", "value": ["pot", "balcony", "greenhouse"] }
+      ]
+    },
+    "description": "Show perforated pot question only when relevant to pot-like locations"
+  },
+  {
+    "id": 2002,
+    "questionId": 108,
+    "expressionJson": {
+      "all": [
+        { "field": "transferred", "op": "=", "value": true }
+      ]
+    },
+    "description": "Show sustaining soil block only if transferred"
+  }
+]

@@ -1,0 +1,72 @@
+.start-check-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-top: 16px;
+}
+
+.start-check-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.start-check-icon {
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.start-check-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.start-check-header p {
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+}
+
+.start-check-card {
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.option-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  padding: 12px 24px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: white;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.option-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.option-btn.selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-lighter);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.start-check-actions {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.start-check-extras {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,12 @@
+[
+  { "id": 7001, "plantId": 6001, "questionKey": "fruit_tree", "answerValue": true, "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7002, "plantId": 6001, "questionKey": "plant_type", "answerValue": "lemon", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7003, "plantId": 6001, "questionKey": "source_type", "answerValue": "nursery", "answerSource": "ai", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7004, "plantId": 6001, "questionKey": "transferred", "answerValue": true, "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7005, "plantId": 6001, "questionKey": "sustaining_soil_block", "answerValue": "unknown", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7006, "plantId": 6001, "questionKey": "certainty_level", "answerValue": "medium", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7010, "plantId": 6002, "questionKey": "fruit_tree", "answerValue": true, "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7011, "plantId": 6002, "questionKey": "plant_type", "answerValue": "pomegranate", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7012, "plantId": 6002, "questionKey": "source_type", "answerValue": "seed", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7013, "plantId": 6002, "questionKey": "certainty_level", "answerValue": "high", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" }
+]

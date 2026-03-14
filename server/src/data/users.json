@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "fullName": "חנה לנדאו",
+    "email": "hannah@example.com",
+    "role": "user"
+  },
+  {
+    "id": 2,
+    "fullName": "מנהל מערכת",
+    "email": "admin@example.com",
+    "role": "admin"
+  }
+]

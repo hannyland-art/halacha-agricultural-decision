@@ -1,0 +1,46 @@
+[
+  {
+    "id": 4001,
+    "moduleId": 1,
+    "templateCode": "ORL_NOT_APPLICABLE",
+    "statusCode": "NOT_APPLICABLE",
+    "headlineHe": "נראה שדין עורלה אינו חל במקרה הזה",
+    "explanationTemplateHe": "לפי המידע שהוזן, לא נראה שמדובר בעץ פרי החייב בבדיקת עורלה.",
+    "recommendationTemplateHe": "אם יש ספק בסוג הצמח, כדאי לבצע בירור נוסף.",
+    "confidenceLevel": "high",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה."
+  },
+  {
+    "id": 4002,
+    "moduleId": 1,
+    "templateCode": "ORL_UNCERTAIN_01",
+    "statusCode": "NEEDS_REVIEW",
+    "headlineHe": "נדרש בירור נוסף",
+    "explanationTemplateHe": "לפי הנתונים, אין מספיק ודאות כדי לקבוע מצב ברור של עורלה, במיוחד סביב פרטי ההעברה או גוש האדמה.",
+    "recommendationTemplateHe": "מומלץ להשלים פרטים חסרים או להתייעץ עם רב לפני שימוש בפרי.",
+    "confidenceLevel": "medium",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה."
+  },
+  {
+    "id": 4003,
+    "moduleId": 1,
+    "templateCode": "ORL_ACTIVE_01",
+    "statusCode": "ORLAH_ACTIVE",
+    "headlineHe": "ייתכן שהצמח נמצא בתקופת עורלה",
+    "explanationTemplateHe": "לפי התאריך והנתונים שהוזנו, ייתכן שהצמח עדיין בתוך שנות עורלה.",
+    "recommendationTemplateHe": "אין להשתמש בפרי לפני בירור התאריך ההלכתי המדויק וסיום התקופה.",
+    "confidenceLevel": "medium",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה."
+  },
+  {
+    "id": 4004,
+    "moduleId": 1,
+    "templateCode": "ORL_PERMITTED_01",
+    "statusCode": "PERMITTED",
+    "headlineHe": "נראה שהצמח מותר",
+    "explanationTemplateHe": "לפי הנתונים שהוזנו, לא נמצאה כרגע אינדיקציה לבעיה פעילה של עורלה.",
+    "recommendationTemplateHe": "במקרה של שינוי בפרטי הנטיעה או ההעברה, כדאי לעדכן את הנתונים.",
+    "confidenceLevel": "medium",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה."
+  }
+]

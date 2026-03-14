@@ -1,0 +1,141 @@
+.contact-page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-header-icon {
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.contact-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.contact-header p {
+  font-size: 1.0625rem;
+  color: var(--color-text-secondary);
+}
+
+/* Layout */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Detail cards */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-detail-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+}
+
+.contact-detail-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-lighter);
+  color: var(--color-primary);
+  border-radius: 10px;
+}
+
+.contact-detail-body h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.contact-detail-body a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.contact-detail-body a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.contact-detail-body p {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.contact-notes {
+  padding: 16px 20px;
+  background: var(--color-info-light);
+  border-color: transparent;
+}
+
+.contact-notes p {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+/* Form */
+.contact-form-card {
+  padding: 28px;
+}
+
+.contact-form-card h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.contact-form-card textarea.form-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-submit-btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.contact-form-success {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--color-primary);
+}
+
+.contact-form-success p {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.contact-form-success-sub {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary) !important;
+  font-weight: 400 !important;
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}

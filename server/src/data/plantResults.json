@@ -1,0 +1,40 @@
+[
+  {
+    "id": 8001,
+    "plantId": 6001,
+    "ruleSetVersion": "1.0.0",
+    "statusCode": "NEEDS_REVIEW",
+    "resultTemplateCode": "ORL_UNCERTAIN_01",
+    "computedSummaryHe": "נדרש בירור נוסף בגלל חוסר ודאות לגבי גוש האדמה בזמן ההעברה.",
+    "nextRelevantDate": "2026-04-15",
+    "confidenceLevel": "medium",
+    "explanationPathJson": [
+      { "type": "question", "labelHe": "האם זה עץ פרי?" },
+      { "type": "answer", "labelHe": "כן" },
+      { "type": "question", "labelHe": "האם הצמח הועבר ממקום למקום?" },
+      { "type": "answer", "labelHe": "כן" },
+      { "type": "question", "labelHe": "האם היה גוש אדמה שמספיק לקיום הצמח?" },
+      { "type": "answer", "labelHe": "לא יודע/ת" },
+      { "type": "result", "labelHe": "נדרש בירור נוסף" }
+    ],
+    "createdAt": "2026-03-10T10:05:00Z"
+  },
+  {
+    "id": 8002,
+    "plantId": 6002,
+    "ruleSetVersion": "1.0.0",
+    "statusCode": "PERMITTED",
+    "resultTemplateCode": "ORL_PERMITTED_01",
+    "computedSummaryHe": "לפי נתוני ה-MVP הנוכחיים לא זוהתה בעיה פעילה.",
+    "nextRelevantDate": "2026-07-01",
+    "confidenceLevel": "medium",
+    "explanationPathJson": [
+      { "type": "question", "labelHe": "האם זה עץ פרי?" },
+      { "type": "answer", "labelHe": "כן" },
+      { "type": "question", "labelHe": "מה מקור הצמח?" },
+      { "type": "answer", "labelHe": "זרע" },
+      { "type": "result", "labelHe": "נראה שהצמח מותר" }
+    ],
+    "createdAt": "2026-03-09T11:05:00Z"
+  }
+]

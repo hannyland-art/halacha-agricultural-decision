@@ -1,0 +1,30 @@
+[
+  {
+    "id": 6001,
+    "publicPlantId": "PLANT-1001",
+    "userId": 1,
+    "moduleId": 1,
+    "nickname": "הלימון ליד החניה",
+    "plantType": "lemon",
+    "locationText": "גינה אחורית",
+    "ownerIdNumber": "123456789",
+    "description": "עץ לימון ליד החניה, נשתל לפני שנתיים",
+    "imageUrl": "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?w=400",
+    "createdAt": "2026-03-01T09:00:00Z",
+    "updatedAt": "2026-03-10T10:00:00Z"
+  },
+  {
+    "id": 6002,
+    "publicPlantId": "PLANT-1002",
+    "userId": 1,
+    "moduleId": 1,
+    "nickname": "עץ הרימון במרפסת",
+    "plantType": "pomegranate",
+    "locationText": "מרפסת קדמית",
+    "ownerIdNumber": "123456789",
+    "description": "עץ רימון במרפסת הקדמית, חלקה 3",
+    "imageUrl": "https://images.unsplash.com/photo-1603046891744-1f76eb10aec1?w=400",
+    "createdAt": "2026-03-02T09:00:00Z",
+    "updatedAt": "2026-03-09T11:00:00Z"
+  }
+]

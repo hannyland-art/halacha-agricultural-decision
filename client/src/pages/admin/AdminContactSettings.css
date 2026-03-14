@@ -1,0 +1,42 @@
+.admin-contact-form {
+  padding: 32px;
+  max-width: 640px;
+}
+
+.admin-contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.admin-contact-form .form-input {
+  width: 100%;
+}
+
+.admin-contact-form textarea.form-input {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.admin-contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.admin-contact-saved {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-success);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
