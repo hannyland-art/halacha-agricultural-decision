@@ -2,10 +2,10 @@
   {
     "id": 4001,
     "moduleId": 1,
-    "templateCode": "ORL_EXEMPT_REASON",
+    "templateCode": "ORL_EXEMPT_FENCING_TIMBER",
     "statusCode": "EXEMPT",
     "headlineHe": "ייתכן שהנטיעה פטורה מעורלה",
-    "explanationTemplateHe": "עץ שנשתל שלא לצורך פרי (לגידור, לקורות וכד') עשוי להיות פטור מדין ערלה, בתנאי שלא שינה את ייעודו לאחר השתילה.",
+    "explanationTemplateHe": "עץ שנשתל שלא לצורך פרי (לגידור, לקורות וכד') עשוי להיות פטור מדין ערלה, בתנאי שלא שינו את ייעודו לאחר השתילה.",
     "recommendationTemplateHe": "מומלץ לוודא שמדובר בנטיעה שייעודה אינו לפרי. במקרה של ספק, יש להתייעץ עם רב.",
     "confidenceLevel": "medium",
     "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
@@ -13,16 +13,49 @@
   {
     "id": 4002,
     "moduleId": 1,
-    "templateCode": "ORL_ABROAD_UNCERTAIN",
+    "templateCode": "ORL_ORNAMENTAL_REVIEW",
     "statusCode": "NEEDS_REVIEW",
-    "headlineHe": "נדרש בירור נוסף — נטיעה בחו״ל",
-    "explanationTemplateHe": "בחו״ל דין ערלה הוא הלכה למשה מסיני, ויש הבדלים בהחלת הדין בהתאם לסוג העץ ולנסיבות. יש צורך בבירור נוסף.",
-    "recommendationTemplateHe": "מומלץ להתייעץ עם רב מוסמך לגבי החלת דין ערלה בחו״ל.",
+    "headlineHe": "נדרש בירור — נטיעה לנוי",
+    "explanationTemplateHe": "עץ פרי שנשתל למטרת נוי — יש מחלוקת בפוסקים האם חל עליו דין ערלה. חלק מהדעות סוברות שפטור, וחלק מחמירות.",
+    "recommendationTemplateHe": "מומלץ להתייעץ עם רב מוסמך לגבי מעמד הנטיעה. יש להתחשב בסוג העץ ובנסיבות.",
     "confidenceLevel": "low",
     "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
     "id": 4003,
+    "moduleId": 1,
+    "templateCode": "ORL_DOUBT_REASON",
+    "statusCode": "DOUBT",
+    "headlineHe": "ספק — מטרת הנטיעה אינה ברורה",
+    "explanationTemplateHe": "כאשר מטרת הנטיעה אינה ברורה או שמדובר בשימוש מעורב (גם לפרי וגם למטרה אחרת), קיים ספק בנוגע לחיוב ערלה.",
+    "recommendationTemplateHe": "מומלץ לברר את מטרת הנטיעה המקורית ולהתייעץ עם רב.",
+    "confidenceLevel": "low",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4004,
+    "moduleId": 1,
+    "templateCode": "ORL_DOUBT_TRANSFER_UNKNOWN",
+    "statusCode": "DOUBT",
+    "headlineHe": "ספק — לא ידוע אם הייתה העברה",
+    "explanationTemplateHe": "לא ברור אם הצמח הועבר ממקום אחר או שמדובר בשתילה חדשה. מידע זה חיוני לקביעת מניין שנות הערלה.",
+    "recommendationTemplateHe": "מומלץ לברר את היסטוריית הצמח ולהתייעץ עם רב.",
+    "confidenceLevel": "low",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4005,
+    "moduleId": 1,
+    "templateCode": "ORL_DOUBT_SOIL_UNKNOWN",
+    "statusCode": "DOUBT",
+    "headlineHe": "ספק — לא ברור אם נשמר גוש האדמה",
+    "explanationTemplateHe": "לא ברור האם ההעברה נעשתה עם גוש אדמה שלם כדין. מידע זה חיוני — אם היה גוש אדמה מקיים, המניין ממשיך; אם לא, המניין מתחיל מחדש.",
+    "recommendationTemplateHe": "מומלץ לברר את פרטי ההעברה ולהתייעץ עם רב.",
+    "confidenceLevel": "low",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4006,
     "moduleId": 1,
     "templateCode": "ORL_RESTART_NO_SOIL",
     "statusCode": "ORLAH_RESTART",
@@ -33,18 +66,7 @@
     "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
-    "id": 4004,
-    "moduleId": 1,
-    "templateCode": "ORL_UNCERTAIN_TRANSFER",
-    "statusCode": "NEEDS_REVIEW",
-    "headlineHe": "נדרש בירור נוסף — פרטי העברה חסרים",
-    "explanationTemplateHe": "לא ברור האם ההעברה נעשתה עם גוש אדמה שלם כדין. מידע זה חיוני לקביעת מניין שנות הערלה.",
-    "recommendationTemplateHe": "מומלץ לברר את פרטי ההעברה ולהתייעץ עם רב.",
-    "confidenceLevel": "low",
-    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
-  },
-  {
-    "id": 4005,
+    "id": 4007,
     "moduleId": 1,
     "templateCode": "ORL_DELAY_REVIEW",
     "statusCode": "NEEDS_REVIEW",
@@ -55,7 +77,7 @@
     "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
-    "id": 4006,
+    "id": 4008,
     "moduleId": 1,
     "templateCode": "ORL_CONTINUES_SOIL",
     "statusCode": "ORLAH_CONTINUES",
@@ -66,7 +88,7 @@
     "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
-    "id": 4007,
+    "id": 4009,
     "moduleId": 1,
     "templateCode": "ORL_POT_ABROAD",
     "statusCode": "POSSIBLY_EXEMPT",
@@ -77,7 +99,18 @@
     "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
-    "id": 4008,
+    "id": 4010,
+    "moduleId": 1,
+    "templateCode": "ORL_ABROAD_UNCERTAIN",
+    "statusCode": "NEEDS_REVIEW",
+    "headlineHe": "נדרש בירור נוסף — נטיעה בחו״ל",
+    "explanationTemplateHe": "בחו״ל דין ערלה הוא הלכה למשה מסיני, ויש הבדלים בהחלת הדין בהתאם לסוג העץ ולנסיבות. יש צורך בבירור נוסף.",
+    "recommendationTemplateHe": "מומלץ להתייעץ עם רב מוסמך לגבי החלת דין ערלה בחו״ל.",
+    "confidenceLevel": "low",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4011,
     "moduleId": 1,
     "templateCode": "ORL_ACTIVE_ESTIMATED",
     "statusCode": "ORLAH_ACTIVE_ESTIMATED",
@@ -88,7 +121,7 @@
     "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
-    "id": 4009,
+    "id": 4012,
     "moduleId": 1,
     "templateCode": "ORL_ACTIVE_STANDARD",
     "statusCode": "ORLAH_ACTIVE",
@@ -99,7 +132,7 @@
     "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
-    "id": 4010,
+    "id": 4013,
     "moduleId": 1,
     "templateCode": "ORL_ACTIVE_DEFAULT",
     "statusCode": "ORLAH_ACTIVE",

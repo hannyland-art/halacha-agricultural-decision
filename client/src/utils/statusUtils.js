@@ -37,6 +37,11 @@ export const STATUS_MAP = {
     badgeClass: 'badge-info',
     icon: 'ℹ️',
   },
+  DOUBT: {
+    label: 'ספק',
+    badgeClass: 'badge-warning',
+    icon: '❓',
+  },
   NEEDS_REVIEW: {
     label: 'דורש בירור',
     badgeClass: 'badge-warning',

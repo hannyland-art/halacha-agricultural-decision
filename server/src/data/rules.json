@@ -5,20 +5,162 @@
     "priority": 1,
     "conditionsJson": {
       "all": [
-        { "field": "planting_reason", "op": "in", "value": ["fencing", "timber"] }
+        { "field": "planting_reason", "op": "=", "value": "fencing_timber_only" }
       ]
     },
     "actionsJson": {
       "statusCode": "EXEMPT",
-      "resultTemplateCode": "ORL_EXEMPT_REASON"
+      "resultTemplateCode": "ORL_EXEMPT_FENCING_TIMBER",
+      "isEarlyTermination": true
     },
-    "description": "Planted for fencing or timber — possibly exempt from Orlah",
+    "description": "Planted for fencing or timber only — exempt from Orlah",
     "isActive": true
   },
   {
     "id": 5002,
     "ruleSetId": 3001,
     "priority": 2,
+    "conditionsJson": {
+      "all": [
+        { "field": "planting_reason", "op": "=", "value": "ornamental_only" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "NEEDS_REVIEW",
+      "resultTemplateCode": "ORL_ORNAMENTAL_REVIEW",
+      "needsRabbiReview": true,
+      "isEarlyTermination": true
+    },
+    "description": "Planted for ornamental purposes only — debated in halacha",
+    "isActive": true
+  },
+  {
+    "id": 5003,
+    "ruleSetId": 3001,
+    "priority": 3,
+    "conditionsJson": {
+      "all": [
+        { "field": "planting_reason", "op": "=", "value": "unclear_mixed" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "DOUBT",
+      "resultTemplateCode": "ORL_DOUBT_REASON",
+      "isEarlyTermination": true
+    },
+    "description": "Planting reason unclear or mixed — doubt",
+    "isActive": true
+  },
+  {
+    "id": 5004,
+    "ruleSetId": 3001,
+    "priority": 4,
+    "conditionsJson": {
+      "all": [
+        { "field": "planting_reason", "op": "=", "value": "fruit" },
+        { "field": "is_transfer", "op": "=", "value": "unknown" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "DOUBT",
+      "resultTemplateCode": "ORL_DOUBT_TRANSFER_UNKNOWN",
+      "isEarlyTermination": true
+    },
+    "description": "Transfer status unknown — doubt about counting method",
+    "isActive": true
+  },
+  {
+    "id": 5005,
+    "ruleSetId": 3001,
+    "priority": 5,
+    "conditionsJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_soil_block_intact", "op": "=", "value": "unknown" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "DOUBT",
+      "resultTemplateCode": "ORL_DOUBT_SOIL_UNKNOWN",
+      "isEarlyTermination": true
+    },
+    "description": "Transfer with unknown soil block status — doubt about count",
+    "isActive": true
+  },
+  {
+    "id": 5006,
+    "ruleSetId": 3001,
+    "priority": 6,
+    "conditionsJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_soil_block_intact", "op": "=", "value": "no" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "ORLAH_RESTART",
+      "resultTemplateCode": "ORL_RESTART_NO_SOIL"
+    },
+    "description": "Transfer without intact soil block — Orlah count restarts from new planting date",
+    "isActive": true
+  },
+  {
+    "id": 5007,
+    "ruleSetId": 3001,
+    "priority": 7,
+    "conditionsJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_soil_block_intact", "op": "=", "value": "yes" },
+        { "field": "transfer_delay", "op": "in", "value": ["yes_short", "yes_long"] }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "NEEDS_REVIEW",
+      "resultTemplateCode": "ORL_DELAY_REVIEW",
+      "needsRabbiReview": true
+    },
+    "description": "Transfer with soil block but delay — needs review for delay impact",
+    "isActive": true
+  },
+  {
+    "id": 5008,
+    "ruleSetId": 3001,
+    "priority": 8,
+    "conditionsJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_soil_block_intact", "op": "=", "value": "yes" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "ORLAH_CONTINUES",
+      "resultTemplateCode": "ORL_CONTINUES_SOIL"
+    },
+    "description": "Transfer with intact soil block, no delay — Orlah count continues from original date",
+    "isActive": true
+  },
+  {
+    "id": 5009,
+    "ruleSetId": 3001,
+    "priority": 9,
+    "conditionsJson": {
+      "all": [
+        { "field": "current_ground_or_pot", "op": "in", "value": ["non_perforated_pot"] },
+        { "field": "planting_location", "op": "=", "value": "abroad" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "POSSIBLY_EXEMPT",
+      "resultTemplateCode": "ORL_POT_ABROAD"
+    },
+    "description": "Non-perforated pot abroad — possibly exempt",
+    "isActive": true
+  },
+  {
+    "id": 5010,
+    "ruleSetId": 3001,
+    "priority": 10,
     "conditionsJson": {
       "all": [
         { "field": "planting_location", "op": "=", "value": "abroad" },
@@ -34,96 +176,7 @@
     "isActive": true
   },
   {
-    "id": 5003,
-    "ruleSetId": 3001,
-    "priority": 3,
-    "conditionsJson": {
-      "all": [
-        { "field": "is_transfer", "op": "=", "value": "transfer" },
-        { "field": "transfer_soil_block_intact", "op": "=", "value": "no" }
-      ]
-    },
-    "actionsJson": {
-      "statusCode": "ORLAH_RESTART",
-      "resultTemplateCode": "ORL_RESTART_NO_SOIL"
-    },
-    "description": "Transfer without intact soil block — Orlah count restarts",
-    "isActive": true
-  },
-  {
-    "id": 5004,
-    "ruleSetId": 3001,
-    "priority": 4,
-    "conditionsJson": {
-      "all": [
-        { "field": "is_transfer", "op": "=", "value": "transfer" },
-        { "field": "transfer_soil_block_intact", "op": "=", "value": "unknown" }
-      ]
-    },
-    "actionsJson": {
-      "statusCode": "NEEDS_REVIEW",
-      "resultTemplateCode": "ORL_UNCERTAIN_TRANSFER",
-      "needsRabbiReview": true
-    },
-    "description": "Transfer with unknown soil block status — needs rabbi review",
-    "isActive": true
-  },
-  {
-    "id": 5005,
-    "ruleSetId": 3001,
-    "priority": 5,
-    "conditionsJson": {
-      "all": [
-        { "field": "is_transfer", "op": "=", "value": "transfer" },
-        { "field": "transfer_soil_block_intact", "op": "=", "value": "yes" },
-        { "field": "transfer_delay", "op": "=", "value": "yes" }
-      ]
-    },
-    "actionsJson": {
-      "statusCode": "NEEDS_REVIEW",
-      "resultTemplateCode": "ORL_DELAY_REVIEW",
-      "needsRabbiReview": true
-    },
-    "description": "Transfer with soil block but delay — needs review for delay impact",
-    "isActive": true
-  },
-  {
-    "id": 5006,
-    "ruleSetId": 3001,
-    "priority": 6,
-    "conditionsJson": {
-      "all": [
-        { "field": "is_transfer", "op": "=", "value": "transfer" },
-        { "field": "transfer_soil_block_intact", "op": "=", "value": "yes" }
-      ]
-    },
-    "actionsJson": {
-      "statusCode": "ORLAH_CONTINUES",
-      "resultTemplateCode": "ORL_CONTINUES_SOIL"
-    },
-    "description": "Transfer with intact soil block, no delay — Orlah count continues",
-    "isActive": true
-  },
-  {
-    "id": 5007,
-    "ruleSetId": 3001,
-    "priority": 10,
-    "conditionsJson": {
-      "all": [
-        { "field": "current_ground_or_pot", "op": "=", "value": "pot" },
-        { "field": "current_pot_type", "op": "=", "value": "non_perforated" },
-        { "field": "planting_location", "op": "=", "value": "abroad" }
-      ]
-    },
-    "actionsJson": {
-      "statusCode": "POSSIBLY_EXEMPT",
-      "resultTemplateCode": "ORL_POT_ABROAD"
-    },
-    "description": "Non-perforated pot abroad — possibly exempt",
-    "isActive": true
-  },
-  {
-    "id": 5008,
+    "id": 5011,
     "ruleSetId": 3001,
     "priority": 15,
     "conditionsJson": {
@@ -139,7 +192,7 @@
     "isActive": true
   },
   {
-    "id": 5009,
+    "id": 5012,
     "ruleSetId": 3001,
     "priority": 20,
     "conditionsJson": {
@@ -157,7 +210,7 @@
     "isActive": true
   },
   {
-    "id": 5010,
+    "id": 5099,
     "ruleSetId": 3001,
     "priority": 99,
     "conditionsJson": {

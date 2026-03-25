@@ -29,6 +29,8 @@ export const createPlant = (data) => api.post('/plants', data).then(r => r.data)
 // ---- Decision ----
 export const evaluateDecision = (moduleCode, answers) =>
   api.post('/decision/evaluate', { moduleCode, answers }).then(r => r.data);
+export const checkEarlyTermination = (moduleCode, answers) =>
+  api.post('/decision/check-early', { moduleCode, answers }).then(r => r.data);
 
 // ---- AI ----
 export const extractAIParameters = (text) =>

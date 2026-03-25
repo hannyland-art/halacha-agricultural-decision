@@ -1,18 +1,17 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { Sparkles, Loader2, ChevronLeft } from 'lucide-react';
-import { getModuleQuestions, evaluateDecision } from '../services/api';
+import { Sparkles, Loader2, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { getModuleQuestions, evaluateDecision, checkEarlyTermination } from '../services/api';
 import AIAssistant from '../components/AIAssistant';
 import './WizardPage.css';
 
 /**
- * Check if a question should be visible based on current answers
+ * Check if a question is visible given the current answers and its visibility rules
  */
 function isQuestionVisible(question, answers) {
   if (!question.visibilityRules || question.visibilityRules.length === 0) {
     return true;
   }
-
   return question.visibilityRules.every((rule) => {
     const { expressionJson } = rule;
     if (expressionJson.all) {
@@ -20,32 +19,16 @@ function isQuestionVisible(question, answers) {
         const answer = answers[cond.field];
         if (answer === undefined || answer === null) return false;
         switch (cond.op) {
-          case '=':
-            return answer === cond.value;
-          case '!=':
-            return answer !== cond.value;
-          case 'in':
-            return Array.isArray(cond.value) && cond.value.includes(answer);
-          default:
-            return false;
+          case '=': return answer === cond.value;
+          case '!=': return answer !== cond.value;
+          case 'in': return Array.isArray(cond.value) && cond.value.includes(answer);
+          default: return false;
         }
       });
     }
     return true;
   });
 }
-
-/**
- * Group key to section label mapping
- */
-const GROUP_SECTION_LABELS = {
-  planting_date: 'תאריך נטיעה',
-  seedling_info: 'פרטי השתיל',
-  transfer_decision: 'סוג הנטיעה',
-  prev_location: 'פרטי המקום הקודם (לפני ההעברה)',
-  transfer_method: 'פרטי אופן ההעברה',
-  current_location: 'מיקום הנטיעה הנוכחי',
-};
 
 /**
  * Render a single question's answer input
@@ -55,23 +38,10 @@ function QuestionInput({ question, value, onChange }) {
     case 'boolean':
       return (
         <div className="option-buttons">
-          <button
-            className={`option-btn ${value === true ? 'selected' : ''}`}
-            onClick={() => onChange(true)}
-            type="button"
-          >
-            כן
-          </button>
-          <button
-            className={`option-btn ${value === false ? 'selected' : ''}`}
-            onClick={() => onChange(false)}
-            type="button"
-          >
-            לא
-          </button>
+          <button className={`option-btn ${value === true ? 'selected' : ''}`} onClick={() => onChange(true)} type="button">כן</button>
+          <button className={`option-btn ${value === false ? 'selected' : ''}`} onClick={() => onChange(false)} type="button">לא</button>
         </div>
       );
-
     case 'select':
       return question.options ? (
         <div className="option-buttons option-buttons-wrap">
@@ -87,39 +57,12 @@ function QuestionInput({ question, value, onChange }) {
           ))}
         </div>
       ) : null;
-
     case 'date':
-      return (
-        <input
-          type="date"
-          className="form-input"
-          value={value || ''}
-          onChange={(e) => onChange(e.target.value)}
-        />
-      );
-
+      return <input type="date" className="form-input" value={value || ''} onChange={(e) => onChange(e.target.value)} />;
     case 'text':
-      return (
-        <input
-          type="text"
-          className="form-input"
-          value={value || ''}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="הקלידו כאן..."
-        />
-      );
-
+      return <input type="text" className="form-input" value={value || ''} onChange={(e) => onChange(e.target.value)} placeholder="הקלידו כאן..." />;
     case 'number':
-      return (
-        <input
-          type="number"
-          className="form-input"
-          value={value ?? ''}
-          onChange={(e) => onChange(e.target.value === '' ? '' : Number(e.target.value))}
-          placeholder="הזינו מספר..."
-        />
-      );
-
+      return <input type="number" className="form-input" value={value ?? ''} onChange={(e) => onChange(e.target.value === '' ? '' : Number(e.target.value))} placeholder="הזינו מספר..." />;
     default:
       return null;
   }
@@ -130,66 +73,155 @@ export default function WizardPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const [questions, setQuestions] = useState([]);
+  const [allQuestions, setAllQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [loading, setLoading] = useState(true);
   const [evaluating, setEvaluating] = useState(false);
+  const [checkingEarly, setCheckingEarly] = useState(false);
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [stepHistory, setStepHistory] = useState([]);
   const [aiOpen, setAiOpen] = useState(searchParams.get('ai') === 'true');
 
+  // Load questions from API
   useEffect(() => {
-    loadQuestions();
+    (async () => {
+      try {
+        const data = await getModuleQuestions(moduleCode || 'orlah');
+        setAllQuestions(data);
+      } catch (err) {
+        console.error('Failed to load questions:', err);
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, [moduleCode]);
 
-  const loadQuestions = async () => {
-    try {
-      const data = await getModuleQuestions(moduleCode || 'orlah');
-      setQuestions(data);
-
-      const initial = {};
-      const plantType = searchParams.get('plantType');
-      if (plantType) initial.seedling_type = plantType;
-      setAnswers(initial);
-    } catch (err) {
-      console.error('Failed to load questions:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Get visible questions based on current answers
-  const visibleQuestions = useMemo(
-    () => questions.filter((q) => isQuestionVisible(q, answers)),
-    [questions, answers]
-  );
-
-  // Group visible questions into sections
-  const sections = useMemo(() => {
-    const secs = [];
-    let currentGroup = null;
-
-    for (const q of visibleQuestions) {
-      if (q.groupKey !== currentGroup) {
-        currentGroup = q.groupKey;
-        const label = q.sectionLabelHe || GROUP_SECTION_LABELS[q.groupKey] || '';
-        secs.push({ groupKey: q.groupKey, label, questions: [q] });
-      } else {
-        secs[secs.length - 1].questions.push(q);
+  /**
+   * Build ordered step keys from questions (preserving order from server).
+   * Each step is a group of questions sharing the same stepKey.
+   */
+  const steps = useMemo(() => {
+    const seen = new Set();
+    const ordered = [];
+    for (const q of allQuestions) {
+      const key = q.stepKey || q.groupKey || q.questionKey;
+      if (!seen.has(key)) {
+        seen.add(key);
+        ordered.push(key);
       }
     }
-    return secs;
-  }, [visibleQuestions]);
+    return ordered;
+  }, [allQuestions]);
 
-  // Count answered required questions for progress
-  const requiredCount = visibleQuestions.filter((q) => q.isRequired).length;
-  const answeredRequired = visibleQuestions.filter(
-    (q) => q.isRequired && answers[q.questionKey] !== undefined && answers[q.questionKey] !== null && answers[q.questionKey] !== ''
-  ).length;
-  const progress = requiredCount > 0 ? (answeredRequired / requiredCount) * 100 : 0;
-  const canSubmit = answeredRequired === requiredCount;
+  /**
+   * For a given step key, return the visible questions in that step
+   */
+  const getStepQuestions = useCallback(
+    (stepKey) => {
+      return allQuestions
+        .filter((q) => (q.stepKey || q.groupKey || q.questionKey) === stepKey)
+        .filter((q) => isQuestionVisible(q, answers));
+    },
+    [allQuestions, answers]
+  );
+
+  /**
+   * Compute which steps are visible (have at least one visible question)
+   */
+  const visibleSteps = useMemo(() => {
+    return steps.filter((stepKey) => getStepQuestions(stepKey).length > 0);
+  }, [steps, getStepQuestions]);
+
+  const currentStepKey = visibleSteps[currentStepIndex] || visibleSteps[0];
+  const currentQuestions = currentStepKey ? getStepQuestions(currentStepKey) : [];
+
+  // Get the section label from the first question that has one
+  const sectionLabel = useMemo(() => {
+    for (const q of currentQuestions) {
+      if (q.sectionLabelHe) return q.sectionLabelHe;
+    }
+    return '';
+  }, [currentQuestions]);
+
+  // Check if all required questions in the current step are answered
+  const isStepComplete = useMemo(() => {
+    return currentQuestions
+      .filter((q) => q.isRequired)
+      .every((q) => {
+        const v = answers[q.questionKey];
+        return v !== undefined && v !== null && v !== '';
+      });
+  }, [currentQuestions, answers]);
+
+  // Total progress
+  const totalVisibleRequired = useMemo(() => {
+    let total = 0;
+    let answered = 0;
+    for (const stepKey of visibleSteps) {
+      const qs = getStepQuestions(stepKey);
+      for (const q of qs) {
+        if (q.isRequired) {
+          total++;
+          const v = answers[q.questionKey];
+          if (v !== undefined && v !== null && v !== '') answered++;
+        }
+      }
+    }
+    return { total, answered };
+  }, [visibleSteps, getStepQuestions, answers]);
+
+  const progress = totalVisibleRequired.total > 0
+    ? (totalVisibleRequired.answered / totalVisibleRequired.total) * 100
+    : 0;
+
+  const isLastStep = currentStepIndex >= visibleSteps.length - 1;
 
   const handleAnswer = useCallback((questionKey, value) => {
     setAnswers((prev) => ({ ...prev, [questionKey]: value }));
   }, []);
+
+  /**
+   * Go to the next step, checking for early termination first
+   */
+  const handleNext = async () => {
+    if (!isStepComplete) return;
+
+    // Check for early termination
+    setCheckingEarly(true);
+    try {
+      const earlyResult = await checkEarlyTermination(moduleCode || 'orlah', answers);
+      if (earlyResult.shouldTerminate && earlyResult.result) {
+        navigate('/result', {
+          state: { result: earlyResult.result, answers, moduleCode: moduleCode || 'orlah' },
+        });
+        return;
+      }
+    } catch (err) {
+      console.error('Early check failed (continuing):', err);
+    } finally {
+      setCheckingEarly(false);
+    }
+
+    if (isLastStep) {
+      // Submit for full evaluation
+      await handleSubmit();
+    } else {
+      // Find next visible step
+      setStepHistory((prev) => [...prev, currentStepIndex]);
+      setCurrentStepIndex((prev) => {
+        const next = prev + 1;
+        return next < visibleSteps.length ? next : prev;
+      });
+    }
+  };
+
+  const handleBack = () => {
+    if (stepHistory.length > 0) {
+      const prevIndex = stepHistory[stepHistory.length - 1];
+      setStepHistory((prev) => prev.slice(0, -1));
+      setCurrentStepIndex(prevIndex);
+    }
+  };
 
   const handleSubmit = async () => {
     setEvaluating(true);
@@ -209,6 +241,7 @@ export default function WizardPage() {
     setAnswers((prev) => ({ ...prev, [field]: value }));
   }, []);
 
+  // ─── Loading state ─────────────────────────────────────────────
   if (loading) {
     return (
       <div className="wizard-loading container">
@@ -218,7 +251,7 @@ export default function WizardPage() {
     );
   }
 
-  if (visibleQuestions.length === 0) {
+  if (visibleSteps.length === 0) {
     return (
       <div className="wizard-loading container">
         <p>לא נמצאו שאלות למודול זה.</p>
@@ -226,35 +259,40 @@ export default function WizardPage() {
     );
   }
 
+  // ─── Render ────────────────────────────────────────────────────
   return (
     <div className="wizard-page container">
       {/* Progress bar */}
-      <div className="wizard-progress">
-        <div className="wizard-progress-bar" style={{ width: `${progress}%` }} />
-      </div>
-      <div className="wizard-progress-text">
-        {answeredRequired} מתוך {requiredCount} שאלות חובה מולאו
+      <div className="wizard-header-bar">
+        <div className="wizard-progress">
+          <div className="wizard-progress-bar" style={{ width: `${progress}%` }} />
+        </div>
+        <div className="wizard-progress-info">
+          <span className="wizard-step-counter">
+            שלב {currentStepIndex + 1} מתוך {visibleSteps.length}
+          </span>
+          <span className="wizard-progress-text">
+            {totalVisibleRequired.answered}/{totalVisibleRequired.total} שאלות חובה
+          </span>
+        </div>
       </div>
 
       <div className="wizard-layout">
-        {/* Questions list */}
+        {/* Step card */}
         <div className="wizard-main">
-          {sections.map((section) => (
-            <div key={section.groupKey} className="wizard-section">
-              {section.label && (
-                <div className="wizard-section-header">
-                  <span className="wizard-section-label">{section.label}</span>
-                </div>
-              )}
+          <div className="wizard-step-card card">
+            {sectionLabel && (
+              <div className="wizard-step-header">
+                <span className="wizard-step-label">{sectionLabel}</span>
+              </div>
+            )}
 
-              {section.questions.map((q, qIdx) => {
+            <div className="wizard-step-body">
+              {currentQuestions.map((q) => {
                 const val = answers[q.questionKey];
                 const isFilled = val !== undefined && val !== null && val !== '';
                 return (
-                  <div
-                    key={q.id}
-                    className={`wizard-question-row ${isFilled ? 'filled' : ''}`}
-                  >
+                  <div key={q.id} className={`wizard-question-block ${isFilled ? 'filled' : ''}`}>
                     <div className="wizard-question-header">
                       <h3 className="wizard-question-label">
                         {q.labelHe}
@@ -264,60 +302,97 @@ export default function WizardPage() {
                         <span className="wizard-optional-badge">אופציונלי</span>
                       )}
                     </div>
-                    {q.helpTextHe && (
-                      <p className="wizard-help-text">{q.helpTextHe}</p>
-                    )}
+                    {q.helpTextHe && <p className="wizard-help-text">{q.helpTextHe}</p>}
                     <div className="wizard-answer-area">
-                      <QuestionInput
-                        question={q}
-                        value={val}
-                        onChange={(v) => handleAnswer(q.questionKey, v)}
-                      />
+                      <QuestionInput question={q} value={val} onChange={(v) => handleAnswer(q.questionKey, v)} />
                     </div>
                   </div>
                 );
               })}
             </div>
-          ))}
 
-          {/* Submit */}
-          <div className="wizard-submit-area">
-            <button
-              className="btn btn-primary btn-lg"
-              onClick={handleSubmit}
-              disabled={evaluating || !canSubmit}
-            >
-              {evaluating ? (
-                <>
-                  <Loader2 size={18} className="spinner" />
-                  מחשב...
-                </>
-              ) : (
-                <>
-                  קבל תוצאה
-                  <ChevronLeft size={18} />
-                </>
+            {/* Navigation buttons */}
+            <div className="wizard-nav-buttons">
+              {stepHistory.length > 0 && (
+                <button className="btn btn-ghost" type="button" onClick={handleBack}>
+                  <ChevronRight size={18} />
+                  חזרה
+                </button>
               )}
-            </button>
-            {!canSubmit && (
-              <p className="wizard-submit-hint">יש למלא את כל שדות החובה (*) כדי לקבל תוצאה</p>
-            )}
+              <div className="wizard-nav-spacer" />
+              <button
+                className={`btn ${isLastStep ? 'btn-primary' : 'btn-primary'} btn-lg`}
+                type="button"
+                onClick={handleNext}
+                disabled={!isStepComplete || evaluating || checkingEarly}
+              >
+                {evaluating || checkingEarly ? (
+                  <>
+                    <Loader2 size={18} className="spinner" />
+                    {evaluating ? 'מחשב תוצאה...' : 'בודק...'}
+                  </>
+                ) : isLastStep ? (
+                  <>
+                    קבל תוצאה
+                    <ChevronLeft size={18} />
+                  </>
+                ) : (
+                  <>
+                    המשך
+                    <ChevronLeft size={18} />
+                  </>
+                )}
+              </button>
+            </div>
           </div>
+
+          {!isStepComplete && (
+            <p className="wizard-step-hint">יש לענות על כל שדות החובה (*) כדי להמשיך</p>
+          )}
         </div>
 
-        {/* Sidebar — AI button */}
+        {/* Sidebar */}
         <div className="wizard-sidebar">
           <div className="card wizard-sidebar-card">
             <h4 className="wizard-sidebar-title">חישוב שנות ערלה</h4>
             <p className="wizard-sidebar-desc">
-              מלאו את כל הפרטים הנדרשים ולחצו על "קבל תוצאה" לחישוב.
+              ענו על השאלות בכל שלב. המערכת תוביל אתכם לפי הצורך.
             </p>
             <div className="wizard-sidebar-progress">
               <div className="wizard-sidebar-progress-bar" style={{ width: `${progress}%` }} />
             </div>
             <span className="wizard-sidebar-progress-text">
-              {answeredRequired}/{requiredCount} חובה
+              שלב {currentStepIndex + 1}/{visibleSteps.length}
             </span>
+
+            {/* Answer summary */}
+            {stepHistory.length > 0 && (
+              <div className="wizard-summary">
+                <h5 className="wizard-summary-title">תשובות שניתנו:</h5>
+                <div className="wizard-summary-list">
+                  {Object.entries(answers)
+                    .filter(([, v]) => v !== undefined && v !== null && v !== '')
+                    .slice(0, 8)
+                    .map(([key, val]) => {
+                      const q = allQuestions.find((qq) => qq.questionKey === key);
+                      if (!q) return null;
+                      let displayVal = String(val);
+                      if (val === true) displayVal = 'כן';
+                      if (val === false) displayVal = 'לא';
+                      if (q.options) {
+                        const opt = q.options.find((o) => o.optionValue === val);
+                        if (opt) displayVal = opt.optionLabelHe;
+                      }
+                      return (
+                        <div key={key} className="wizard-summary-item">
+                          <span className="wizard-summary-q">{q.labelHe}</span>
+                          <span className="wizard-summary-a">{displayVal}</span>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+            )}
           </div>
 
           <button className="btn btn-secondary wizard-ai-btn" onClick={() => setAiOpen(true)}>
