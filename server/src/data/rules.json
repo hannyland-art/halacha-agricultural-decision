@@ -5,14 +5,14 @@
     "priority": 1,
     "conditionsJson": {
       "all": [
-        { "field": "fruit_tree", "op": "=", "value": false }
+        { "field": "planting_reason", "op": "in", "value": ["fencing", "timber"] }
       ]
     },
     "actionsJson": {
-      "statusCode": "NOT_APPLICABLE",
-      "resultTemplateCode": "ORL_NOT_APPLICABLE"
+      "statusCode": "EXEMPT",
+      "resultTemplateCode": "ORL_EXEMPT_REASON"
     },
-    "description": "If not a fruit tree, Orlah does not apply",
+    "description": "Planted for fencing or timber — possibly exempt from Orlah",
     "isActive": true
   },
   {
@@ -21,16 +21,16 @@
     "priority": 2,
     "conditionsJson": {
       "all": [
-        { "field": "fruit_tree", "op": "=", "value": true },
-        { "field": "transferred", "op": "=", "value": true },
-        { "field": "sustaining_soil_block", "op": "=", "value": "unknown" }
+        { "field": "planting_location", "op": "=", "value": "abroad" },
+        { "field": "seedling_type", "op": "in", "value": ["mature_tree", "unknown"] }
       ]
     },
     "actionsJson": {
       "statusCode": "NEEDS_REVIEW",
-      "resultTemplateCode": "ORL_UNCERTAIN_01"
+      "resultTemplateCode": "ORL_ABROAD_UNCERTAIN",
+      "needsRabbiReview": true
     },
-    "description": "Transferred plant with unknown sustaining soil block requires review",
+    "description": "Abroad with mature/unknown seedling — needs review",
     "isActive": true
   },
   {
@@ -39,15 +39,15 @@
     "priority": 3,
     "conditionsJson": {
       "all": [
-        { "field": "fruit_tree", "op": "=", "value": true },
-        { "field": "certainty_level", "op": "=", "value": "low" }
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_soil_block_intact", "op": "=", "value": "no" }
       ]
     },
     "actionsJson": {
-      "statusCode": "NEEDS_REVIEW",
-      "resultTemplateCode": "ORL_UNCERTAIN_01"
+      "statusCode": "ORLAH_RESTART",
+      "resultTemplateCode": "ORL_RESTART_NO_SOIL"
     },
-    "description": "Low certainty requires review",
+    "description": "Transfer without intact soil block — Orlah count restarts",
     "isActive": true
   },
   {
@@ -56,31 +56,118 @@
     "priority": 4,
     "conditionsJson": {
       "all": [
-        { "field": "fruit_tree", "op": "=", "value": true },
-        { "field": "source_type", "op": "=", "value": "nursery" }
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_soil_block_intact", "op": "=", "value": "unknown" }
       ]
     },
     "actionsJson": {
-      "statusCode": "ORLAH_ACTIVE",
-      "resultTemplateCode": "ORL_ACTIVE_01"
+      "statusCode": "NEEDS_REVIEW",
+      "resultTemplateCode": "ORL_UNCERTAIN_TRANSFER",
+      "needsRabbiReview": true
     },
-    "description": "Fruit tree from nursery may still be in Orlah period",
+    "description": "Transfer with unknown soil block status — needs rabbi review",
     "isActive": true
   },
   {
     "id": 5005,
     "ruleSetId": 3001,
-    "priority": 99,
+    "priority": 5,
     "conditionsJson": {
       "all": [
-        { "field": "fruit_tree", "op": "=", "value": true }
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_soil_block_intact", "op": "=", "value": "yes" },
+        { "field": "transfer_delay", "op": "=", "value": "yes" }
       ]
     },
     "actionsJson": {
-      "statusCode": "PERMITTED",
-      "resultTemplateCode": "ORL_PERMITTED_01"
+      "statusCode": "NEEDS_REVIEW",
+      "resultTemplateCode": "ORL_DELAY_REVIEW",
+      "needsRabbiReview": true
     },
-    "description": "Fallback permitted-like result for MVP",
+    "description": "Transfer with soil block but delay — needs review for delay impact",
+    "isActive": true
+  },
+  {
+    "id": 5006,
+    "ruleSetId": 3001,
+    "priority": 6,
+    "conditionsJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_soil_block_intact", "op": "=", "value": "yes" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "ORLAH_CONTINUES",
+      "resultTemplateCode": "ORL_CONTINUES_SOIL"
+    },
+    "description": "Transfer with intact soil block, no delay — Orlah count continues",
+    "isActive": true
+  },
+  {
+    "id": 5007,
+    "ruleSetId": 3001,
+    "priority": 10,
+    "conditionsJson": {
+      "all": [
+        { "field": "current_ground_or_pot", "op": "=", "value": "pot" },
+        { "field": "current_pot_type", "op": "=", "value": "non_perforated" },
+        { "field": "planting_location", "op": "=", "value": "abroad" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "POSSIBLY_EXEMPT",
+      "resultTemplateCode": "ORL_POT_ABROAD"
+    },
+    "description": "Non-perforated pot abroad — possibly exempt",
+    "isActive": true
+  },
+  {
+    "id": 5008,
+    "ruleSetId": 3001,
+    "priority": 15,
+    "conditionsJson": {
+      "all": [
+        { "field": "date_type", "op": "=", "value": "estimated" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "ORLAH_ACTIVE_ESTIMATED",
+      "resultTemplateCode": "ORL_ACTIVE_ESTIMATED"
+    },
+    "description": "Estimated date — Orlah active but date is approximate",
+    "isActive": true
+  },
+  {
+    "id": 5009,
+    "ruleSetId": 3001,
+    "priority": 20,
+    "conditionsJson": {
+      "all": [
+        { "field": "planting_reason", "op": "=", "value": "fruit" },
+        { "field": "planting_location", "op": "=", "value": "israel" },
+        { "field": "is_transfer", "op": "=", "value": "new_planting" }
+      ]
+    },
+    "actionsJson": {
+      "statusCode": "ORLAH_ACTIVE",
+      "resultTemplateCode": "ORL_ACTIVE_STANDARD"
+    },
+    "description": "Standard new fruit planting in Israel — Orlah applies",
+    "isActive": true
+  },
+  {
+    "id": 5010,
+    "ruleSetId": 3001,
+    "priority": 99,
+    "conditionsJson": {
+      "all": []
+    },
+    "actionsJson": {
+      "statusCode": "ORLAH_ACTIVE",
+      "resultTemplateCode": "ORL_ACTIVE_DEFAULT"
+    },
+    "description": "Fallback — assume Orlah active for safety",
     "isActive": true
   }
 ]

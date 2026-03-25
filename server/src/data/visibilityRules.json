@@ -1,22 +1,186 @@
 [
   {
     "id": 2001,
-    "questionId": 106,
+    "questionId": 111,
     "expressionJson": {
       "all": [
-        { "field": "growth_location", "op": "in", "value": ["pot", "balcony", "greenhouse"] }
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
       ]
     },
-    "description": "Show perforated pot question only when relevant to pot-like locations"
+    "description": "Show previous planting date only when transfer"
   },
   {
     "id": 2002,
-    "questionId": 108,
+    "questionId": 112,
     "expressionJson": {
       "all": [
-        { "field": "transferred", "op": "=", "value": true }
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
       ]
     },
-    "description": "Show sustaining soil block only if transferred"
+    "description": "Show previous location area only when transfer"
+  },
+  {
+    "id": 2003,
+    "questionId": 113,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
+      ]
+    },
+    "description": "Show prev_in_structure only when transfer"
+  },
+  {
+    "id": 2004,
+    "questionId": 114,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
+      ]
+    },
+    "description": "Show prev_under_roof only when transfer"
+  },
+  {
+    "id": 2005,
+    "questionId": 115,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
+      ]
+    },
+    "description": "Show prev_ground_or_pot only when transfer"
+  },
+  {
+    "id": 2006,
+    "questionId": 116,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "prev_ground_or_pot", "op": "=", "value": "pot" }
+      ]
+    },
+    "description": "Show prev_pot_type only when transfer and was in pot"
+  },
+  {
+    "id": 2007,
+    "questionId": 117,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "prev_ground_or_pot", "op": "=", "value": "pot" }
+      ]
+    },
+    "description": "Show prev_pot_separation only when transfer and was in pot"
+  },
+  {
+    "id": 2008,
+    "questionId": 118,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
+      ]
+    },
+    "description": "Show prev_on_pavement only when transfer"
+  },
+  {
+    "id": 2010,
+    "questionId": 121,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
+      ]
+    },
+    "description": "Show transfer_container_type only when transfer"
+  },
+  {
+    "id": 2011,
+    "questionId": 122,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
+      ]
+    },
+    "description": "Show transfer_soil_block_intact only when transfer"
+  },
+  {
+    "id": 2012,
+    "questionId": 123,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
+      ]
+    },
+    "description": "Show transfer_delay only when transfer"
+  },
+  {
+    "id": 2013,
+    "questionId": 124,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_delay", "op": "=", "value": "yes" }
+      ]
+    },
+    "description": "Show transfer_delay_duration only when there was a delay"
+  },
+  {
+    "id": 2014,
+    "questionId": 125,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" }
+      ]
+    },
+    "description": "Show transfer_had_fruit only when transfer"
+  },
+  {
+    "id": 2015,
+    "questionId": 126,
+    "expressionJson": {
+      "all": [
+        { "field": "is_transfer", "op": "=", "value": "transfer" },
+        { "field": "transfer_had_fruit", "op": "=", "value": "yes" }
+      ]
+    },
+    "description": "Show transfer_fruit_status only when had fruit on transfer"
+  },
+  {
+    "id": 2020,
+    "questionId": 132,
+    "expressionJson": {
+      "all": [
+        { "field": "current_in_structure", "op": "=", "value": "no" }
+      ]
+    },
+    "description": "Show current_under_roof only when not in structure"
+  },
+  {
+    "id": 2021,
+    "questionId": 134,
+    "expressionJson": {
+      "all": [
+        { "field": "current_ground_or_pot", "op": "=", "value": "pot" }
+      ]
+    },
+    "description": "Show current_pot_type only when in pot"
+  },
+  {
+    "id": 2022,
+    "questionId": 135,
+    "expressionJson": {
+      "all": [
+        { "field": "current_ground_or_pot", "op": "=", "value": "pot" }
+      ]
+    },
+    "description": "Show current_pot_separation only when in pot"
+  },
+  {
+    "id": 2023,
+    "questionId": 136,
+    "expressionJson": {
+      "all": [
+        { "field": "current_ground_or_pot", "op": "=", "value": "pot" }
+      ]
+    },
+    "description": "Show current_on_pavement only when in pot"
   }
 ]

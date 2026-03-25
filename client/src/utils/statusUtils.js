@@ -8,9 +8,34 @@ export const STATUS_MAP = {
     icon: '✅',
   },
   ORLAH_ACTIVE: {
-    label: 'אסור כעת',
+    label: 'ערלה חלה',
     badgeClass: 'badge-danger',
     icon: '🚫',
+  },
+  ORLAH_ACTIVE_ESTIMATED: {
+    label: 'ערלה חלה (תאריך משוער)',
+    badgeClass: 'badge-danger',
+    icon: '🚫',
+  },
+  ORLAH_RESTART: {
+    label: 'מניין מחדש',
+    badgeClass: 'badge-danger',
+    icon: '🔄',
+  },
+  ORLAH_CONTINUES: {
+    label: 'מניין ממשיך',
+    badgeClass: 'badge-warning',
+    icon: '⏳',
+  },
+  EXEMPT: {
+    label: 'ייתכן פטור',
+    badgeClass: 'badge-success',
+    icon: '✔️',
+  },
+  POSSIBLY_EXEMPT: {
+    label: 'ייתכן פטור',
+    badgeClass: 'badge-info',
+    icon: 'ℹ️',
   },
   NEEDS_REVIEW: {
     label: 'דורש בירור',

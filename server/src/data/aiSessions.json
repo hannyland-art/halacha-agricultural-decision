@@ -2,20 +2,26 @@
   {
     "id": 9001,
     "plantId": 6001,
-    "rawUserText": "קניתי עץ לימון ממשתלה, שתלתי אותו בגינה ואני לא בטוחה אם היה גוש אדמה שמחזיק אותו.",
+    "rawUserText": "שתלתי שתיל צעיר של לימון בגינה בארץ ישראל ב-15 בספטמבר 2024, הוא הועבר מהמשתלה ולא בטוחה אם היה גוש אדמה שלם.",
     "extractedFieldsJson": {
-      "plant_type": "lemon",
-      "source_type": "nursery",
-      "growth_location": "garden",
-      "transferred": true,
-      "sustaining_soil_block": "unknown"
+      "planting_date": "2024-09-15",
+      "date_type": "exact",
+      "seedling_type": "young_seedling",
+      "planting_reason": "fruit",
+      "planting_location": "israel",
+      "is_transfer": "transfer",
+      "transfer_soil_block_intact": "unknown",
+      "current_ground_or_pot": "ground"
     },
     "confidenceJson": {
-      "plant_type": 0.95,
-      "source_type": 0.98,
-      "growth_location": 0.9,
-      "transferred": 0.88,
-      "sustaining_soil_block": 0.7
+      "planting_date": 0.95,
+      "date_type": 0.9,
+      "seedling_type": 0.9,
+      "planting_reason": 0.85,
+      "planting_location": 0.95,
+      "is_transfer": 0.88,
+      "transfer_soil_block_intact": 0.7,
+      "current_ground_or_pot": 0.85
     },
     "createdAt": "2026-03-10T10:01:00Z"
   }

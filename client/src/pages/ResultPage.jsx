@@ -10,31 +10,37 @@ import './ResultPage.css';
 
 // Demo result data
 const DEMO_RESULT = {
-  statusCode: 'NEEDS_REVIEW',
-  headlineHe: 'נדרש בירור נוסף',
-  explanationHe: 'לפי הנתונים, אין מספיק ודאות כדי לקבוע מצב ברור של עורלה, במיוחד סביב פרטי ההעברה או גוש האדמה.',
-  recommendationHe: 'מומלץ להשלים פרטים חסרים או להתייעץ עם רב לפני שימוש בפרי.',
-  confidenceLevel: 'medium',
-  disclaimerHe: 'המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה.',
-  nextRelevantDate: '2026-04-15',
+  statusCode: 'ORLAH_ACTIVE',
+  headlineHe: 'ערלה חלה',
+  explanationHe: 'לפי הנתונים שהוזנו, הצמח נשתל לצורך פרי בארץ ישראל כשתילה חדשה. דין ערלה חל ויש למנות שלוש שנות ערלה מתאריך הנטיעה.',
+  recommendationHe: 'אין לאכול מפרי העץ עד תום שלוש שנות ערלה. בשנה הרביעית — פירות נטע רבעי.',
+  confidenceLevel: 'high',
+  disclaimerHe: 'המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך.',
+  permittedDateGregorian: '2029-03-15',
+  permittedDateHebrew: 'י״ב אדר ב׳ תשפ״ט',
+  isSafek: false,
+  isEstimatedDate: false,
+  nextRelevantDate: '2029-03-15',
   explanationPathJson: [
-    { type: 'question', labelHe: 'האם זה עץ פרי?' },
-    { type: 'answer', labelHe: 'כן' },
-    { type: 'question', labelHe: 'האם הצמח הועבר ממקום למקום?' },
-    { type: 'answer', labelHe: 'כן' },
-    { type: 'question', labelHe: 'האם היה גוש אדמה שמספיק לקיום הצמח?' },
-    { type: 'answer', labelHe: 'לא יודע/ת' },
-    { type: 'result', labelHe: 'נדרש בירור נוסף' },
+    { type: 'question', labelHe: 'מהו תאריך הנטיעה?' },
+    { type: 'answer', labelHe: '2026-03-15' },
+    { type: 'question', labelHe: 'מהי סיבת השתילה?' },
+    { type: 'answer', labelHe: 'fruit' },
+    { type: 'question', labelHe: 'היכן נשתל הצמח?' },
+    { type: 'answer', labelHe: 'israel' },
+    { type: 'result', labelHe: 'ערלה חלה' },
   ],
 };
 
 const DEMO_ANSWERS = {
-  fruit_tree: true,
-  plant_type: 'lemon',
-  source_type: 'nursery',
-  transferred: true,
-  sustaining_soil_block: 'unknown',
-  certainty_level: 'medium',
+  planting_date: '2026-03-15',
+  date_type: 'exact',
+  seedling_type: 'young_seedling',
+  planting_reason: 'fruit',
+  planting_location: 'israel',
+  is_transfer: 'new_planting',
+  current_in_structure: 'no',
+  current_ground_or_pot: 'ground',
 };
 
 const CONFIDENCE_LABELS = {
@@ -44,17 +50,64 @@ const CONFIDENCE_LABELS = {
 };
 
 const ANSWER_LABELS = {
-  fruit_tree: 'עץ פרי',
-  plant_type: 'סוג צמח',
-  source_type: 'מקור',
-  growth_location: 'מיקום',
-  transferred: 'הועבר',
-  sustaining_soil_block: 'גוש אדמה',
-  perforated_pot: 'עציץ נקוב',
-  exact_date_known: 'תאריך מדויק ידוע',
-  location_country: 'מיקום גיאוגרפי',
-  certainty_level: 'רמת ודאות',
-  planted_or_purchased_date: 'תאריך שתילה/רכישה',
+  planting_date: 'תאריך נטיעה',
+  date_type: 'סוג תאריך',
+  seedling_type: 'סוג שתיל',
+  planting_reason: 'סיבת השתילה',
+  planting_location: 'מקום השתילה',
+  is_transfer: 'סוג הנטיעה',
+  prev_planting_date: 'תאריך שתילה קודם',
+  prev_location_area: 'מקום קודם',
+  prev_in_structure: 'היה במבנה (קודם)',
+  prev_under_roof: 'היה תחת גג (קודם)',
+  prev_ground_or_pot: 'אדמה/עציץ (קודם)',
+  prev_pot_type: 'סוג עציץ (קודם)',
+  prev_pot_separation: 'הפרדה מאדמה (קודם)',
+  prev_on_pavement: 'על ריצוף (קודם)',
+  transfer_container_type: 'אמצעי העברה',
+  transfer_soil_block_intact: 'גוש אדמה שלם',
+  transfer_delay: 'עיכוב בהעברה',
+  transfer_delay_duration: 'משך העיכוב (ימים)',
+  transfer_had_fruit: 'פירות בהעברה',
+  transfer_fruit_status: 'דין הפירות',
+  current_in_structure: 'במבנה (נוכחי)',
+  current_under_roof: 'תחת גג (נוכחי)',
+  current_ground_or_pot: 'אדמה/עציץ (נוכחי)',
+  current_pot_type: 'סוג עציץ (נוכחי)',
+  current_pot_separation: 'הפרדה מאדמה (נוכחי)',
+  current_on_pavement: 'על ריצוף (נוכחי)',
+};
+
+const OPTION_DISPLAY = {
+  exact: 'מדויק',
+  estimated: 'משוער',
+  young_seedling: 'שתיל צעיר',
+  young_tree: 'אילן צעיר',
+  mature_tree: 'אילן בוגר',
+  cutting: 'ייחור',
+  graft: 'הרכבה',
+  fruit: 'לפרי',
+  fencing: 'לגידור',
+  timber: 'לקורות',
+  ornamental: 'לנוי',
+  other: 'אחר',
+  israel: 'ארץ ישראל',
+  abroad: 'חו״ל',
+  new_planting: 'שתילה חדשה',
+  transfer: 'העברה',
+  ground: 'באדמה',
+  pot: 'בעציץ',
+  perforated: 'עציץ נקוב',
+  non_perforated: 'עציץ שאינו נקוב',
+  bag: 'שקית / שק',
+  bare_root: 'שורש חשוף',
+  soil_block: 'גוש אדמה',
+  orlah_fruit: 'פירות ערלה',
+  permitted_fruit: 'פירות מותרים',
+  uncertain: 'ספק',
+  unknown: 'לא ידוע',
+  yes: 'כן',
+  no: 'לא',
 };
 
 export default function ResultPage() {
@@ -198,10 +251,28 @@ export default function ResultPage() {
                 <span className="detail-label">רמת ודאות</span>
                 <span>{CONFIDENCE_LABELS[result.confidenceLevel] || '—'}</span>
               </div>
-              {result.nextRelevantDate && (
+              {result.permittedDateHebrew && (
                 <div className="result-detail-item">
-                  <span className="detail-label">תאריך הבא</span>
-                  <span>{formatDate(result.nextRelevantDate)}</span>
+                  <span className="detail-label">תאריך היתר (עברי)</span>
+                  <span className="result-date-value">{result.permittedDateHebrew}</span>
+                </div>
+              )}
+              {result.permittedDateGregorian && (
+                <div className="result-detail-item">
+                  <span className="detail-label">תאריך היתר (לועזי)</span>
+                  <span>{formatDate(result.permittedDateGregorian)}</span>
+                </div>
+              )}
+              {result.isSafek && (
+                <div className="result-detail-item">
+                  <span className="detail-label">ספק</span>
+                  <span className="badge badge-warning">יש ספק</span>
+                </div>
+              )}
+              {result.isEstimatedDate && (
+                <div className="result-detail-item">
+                  <span className="detail-label">תאריך משוער</span>
+                  <span className="badge badge-info">כן — התאריך אינו מדויק</span>
                 </div>
               )}
               {result.needsRabbiReview && (
@@ -226,7 +297,7 @@ export default function ResultPage() {
                 let displayVal;
                 if (val === true) displayVal = 'כן';
                 else if (val === false) displayVal = 'לא';
-                else displayVal = String(val);
+                else displayVal = OPTION_DISPLAY[val] || String(val);
                 return (
                   <div key={key} className="result-answer-item">
                     <span className="answer-label">{ANSWER_LABELS[key] || key}</span>

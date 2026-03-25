@@ -1,12 +1,19 @@
 [
-  { "id": 7001, "plantId": 6001, "questionKey": "fruit_tree", "answerValue": true, "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
-  { "id": 7002, "plantId": 6001, "questionKey": "plant_type", "answerValue": "lemon", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
-  { "id": 7003, "plantId": 6001, "questionKey": "source_type", "answerValue": "nursery", "answerSource": "ai", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
-  { "id": 7004, "plantId": 6001, "questionKey": "transferred", "answerValue": true, "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
-  { "id": 7005, "plantId": 6001, "questionKey": "sustaining_soil_block", "answerValue": "unknown", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
-  { "id": 7006, "plantId": 6001, "questionKey": "certainty_level", "answerValue": "medium", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
-  { "id": 7010, "plantId": 6002, "questionKey": "fruit_tree", "answerValue": true, "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
-  { "id": 7011, "plantId": 6002, "questionKey": "plant_type", "answerValue": "pomegranate", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
-  { "id": 7012, "plantId": 6002, "questionKey": "source_type", "answerValue": "seed", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
-  { "id": 7013, "plantId": 6002, "questionKey": "certainty_level", "answerValue": "high", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" }
+  { "id": 7001, "plantId": 6001, "questionKey": "planting_date", "answerValue": "2024-09-15", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7002, "plantId": 6001, "questionKey": "date_type", "answerValue": "exact", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7003, "plantId": 6001, "questionKey": "seedling_type", "answerValue": "young_seedling", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7004, "plantId": 6001, "questionKey": "planting_reason", "answerValue": "fruit", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7005, "plantId": 6001, "questionKey": "planting_location", "answerValue": "israel", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7006, "plantId": 6001, "questionKey": "is_transfer", "answerValue": "transfer", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7007, "plantId": 6001, "questionKey": "transfer_soil_block_intact", "answerValue": "unknown", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+  { "id": 7008, "plantId": 6001, "questionKey": "current_ground_or_pot", "answerValue": "ground", "answerSource": "manual", "createdAt": "2026-03-10T10:00:00Z", "updatedAt": "2026-03-10T10:00:00Z" },
+
+  { "id": 7010, "plantId": 6002, "questionKey": "planting_date", "answerValue": "2025-01-10", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7011, "plantId": 6002, "questionKey": "date_type", "answerValue": "estimated", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7012, "plantId": 6002, "questionKey": "seedling_type", "answerValue": "young_tree", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7013, "plantId": 6002, "questionKey": "planting_reason", "answerValue": "fruit", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7014, "plantId": 6002, "questionKey": "planting_location", "answerValue": "israel", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7015, "plantId": 6002, "questionKey": "is_transfer", "answerValue": "new_planting", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7016, "plantId": 6002, "questionKey": "current_ground_or_pot", "answerValue": "pot", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" },
+  { "id": 7017, "plantId": 6002, "questionKey": "current_pot_type", "answerValue": "perforated", "answerSource": "manual", "createdAt": "2026-03-09T11:00:00Z", "updatedAt": "2026-03-09T11:00:00Z" }
 ]

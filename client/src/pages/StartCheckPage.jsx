@@ -1,19 +1,12 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TreePine, ChevronLeft, Sparkles, Play } from 'lucide-react';
 import './StartCheckPage.css';
 
 export default function StartCheckPage() {
   const navigate = useNavigate();
-  const [plantType, setPlantType] = useState('');
-  const [isFruitTree, setIsFruitTree] = useState('');
 
   const handleStart = () => {
-    // Navigate to wizard with any pre-filled data
-    const params = new URLSearchParams();
-    if (plantType) params.set('plantType', plantType);
-    if (isFruitTree) params.set('fruitTree', isFruitTree);
-    navigate(`/wizard/orlah?${params.toString()}`);
+    navigate('/wizard/orlah');
   };
 
   const handleDemo = () => {
@@ -24,55 +17,23 @@ export default function StartCheckPage() {
     <div className="start-check-page container">
       <div className="start-check-header">
         <TreePine size={48} className="start-check-icon" />
-        <h1>התחל בדיקה חדשה</h1>
-        <p>ענו על מספר שאלות בסיסיות כדי להתחיל את הבדיקה</p>
+        <h1>חישוב שנות ערלה</h1>
+        <p>ענו על שאלות לגבי הנטיעה שלכם וקבלו חישוב מפורט של שנות ערלה, כולל תאריך היתר משוער</p>
       </div>
 
       <div className="start-check-card card">
-        <div className="form-group">
-          <label className="form-label">האם מדובר בעץ פרי?</label>
-          <div className="option-buttons">
-            <button
-              className={`option-btn ${isFruitTree === 'yes' ? 'selected' : ''}`}
-              onClick={() => setIsFruitTree('yes')}
-            >
-              כן
-            </button>
-            <button
-              className={`option-btn ${isFruitTree === 'no' ? 'selected' : ''}`}
-              onClick={() => setIsFruitTree('no')}
-            >
-              לא
-            </button>
-            <button
-              className={`option-btn ${isFruitTree === 'unknown' ? 'selected' : ''}`}
-              onClick={() => setIsFruitTree('unknown')}
-            >
-              לא יודע/ת
-            </button>
-          </div>
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">סוג הצמח</label>
-          <select
-            className="form-input"
-            value={plantType}
-            onChange={(e) => setPlantType(e.target.value)}
-          >
-            <option value="">בחרו סוג צמח...</option>
-            <option value="lemon">לימון</option>
-            <option value="olive">זית</option>
-            <option value="apple">תפוח</option>
-            <option value="pomegranate">רימון</option>
-            <option value="grape">גפן</option>
-            <option value="other">אחר</option>
-          </select>
-        </div>
+        <h3>מה נבדק?</h3>
+        <ul className="start-check-list">
+          <li>תאריך הנטיעה (מדויק או משוער)</li>
+          <li>סוג השתיל וסיבת השתילה</li>
+          <li>מיקום — ארץ ישראל או חו״ל</li>
+          <li>פרטי העברה (אם הצמח הועבר ממקום אחר)</li>
+          <li>מיקום הנטיעה הנוכחי — אדמה, עציץ, מבנה</li>
+        </ul>
 
         <div className="start-check-actions">
           <button className="btn btn-primary btn-lg" onClick={handleStart}>
-            המשך לשאלון
+            התחל בדיקה
             <ChevronLeft size={20} />
           </button>
         </div>

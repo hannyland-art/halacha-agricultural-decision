@@ -141,6 +141,12 @@
   font-weight: 600;
 }
 
+.result-date-value {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primary-dark);
+}
+
 /* Details tab */
 .result-answers-grid {
   display: grid;

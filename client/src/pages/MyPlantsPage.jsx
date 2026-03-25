@@ -41,7 +41,7 @@ export default function MyPlantsPage() {
       <div className="my-plants-page container">
         <div className="my-plants-login-prompt card">
           <Leaf size={48} className="prompt-icon" />
-          <h2>הצמחים שלי</h2>
+          <h2>צמחים</h2>
           <p>כדי לראות את הצמחים השמורים שלכם, יש להתחבר תחילה.</p>
           <Link to="/login" className="btn btn-primary">
             התחברות
@@ -57,7 +57,7 @@ export default function MyPlantsPage() {
         <div>
           <h1>
             <Leaf size={28} style={{ verticalAlign: 'middle', marginLeft: 8 }} />
-            הצמחים שלי
+            צמחים
           </h1>
           <p>כל הצמחים ששמרתם במערכת</p>
         </div>

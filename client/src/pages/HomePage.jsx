@@ -55,36 +55,12 @@ export default function HomePage() {
             <p className="hero-subtitle">
               בדקו עורלה בצורה פשוטה, קבלו תוצאה ברורה, וראו איך המערכת הגיעה אליה.
             </p>
-            <div className="hero-actions">
-              <Link to="/check" className="btn btn-primary btn-lg">
-                התחל בדיקה
-                <ChevronLeft size={20} />
-              </Link>
-              <Link to="/result?demo=true" className="btn btn-secondary btn-lg">
-                צפה בדוגמה
-              </Link>
-            </div>
+           
           </div>
           <div className="hero-visual">
             <div className="hero-illustration">
-              <TreePine size={120} strokeWidth={1} />
+              <img src="/grove.png" alt="מטע" className="hero-grove-img" />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="features-section">
-        <div className="container">
-          <h2 className="section-title">איך זה עובד?</h2>
-          <div className="features-grid">
-            {features.map((f, i) => (
-              <div key={i} className="card feature-card">
-                <div className="feature-icon">{f.icon}</div>
-                <h3 className="feature-title">{f.title}</h3>
-                <p className="feature-desc">{f.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -109,16 +85,37 @@ export default function HomePage() {
                 </div>
                 <p className="module-desc">{m.desc}</p>
                 {m.active && (
-                  <Link to={`/wizard/${m.code}`} className="btn btn-primary btn-sm" style={{ marginTop: 12 }}>
-                    התחל בדיקה
-                    <ChevronLeft size={16} />
-                  </Link>
+                  <div className="module-actions">
+                    <Link to={`/wizard/${m.code}`} className="btn btn-primary btn-sm">
+                      התחל בדיקה
+                      <ChevronLeft size={16} />
+                    </Link>
+                    <Link to="/result?demo=true" className="btn btn-ghost btn-sm">
+                      צפה בדוגמה
+                    </Link>
+                  </div>
                 )}
               </div>
             ))}
           </div>
         </div>
       </section>
+      {/* Features */}
+      <section className="features-section">
+        <div className="container">
+          <h2 className="section-title">איך זה עובד?</h2>
+          <div className="features-grid">
+            {features.map((f, i) => (
+              <div key={i} className="card feature-card">
+                <div className="feature-icon">{f.icon}</div>
+                <h3 className="feature-title">{f.title}</h3>
+                <p className="feature-desc">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* Disclaimer */}
       <section className="disclaimer-section">

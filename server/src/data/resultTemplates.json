@@ -2,45 +2,111 @@
   {
     "id": 4001,
     "moduleId": 1,
-    "templateCode": "ORL_NOT_APPLICABLE",
-    "statusCode": "NOT_APPLICABLE",
-    "headlineHe": "נראה שדין עורלה אינו חל במקרה הזה",
-    "explanationTemplateHe": "לפי המידע שהוזן, לא נראה שמדובר בעץ פרי החייב בבדיקת עורלה.",
-    "recommendationTemplateHe": "אם יש ספק בסוג הצמח, כדאי לבצע בירור נוסף.",
-    "confidenceLevel": "high",
-    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה."
+    "templateCode": "ORL_EXEMPT_REASON",
+    "statusCode": "EXEMPT",
+    "headlineHe": "ייתכן שהנטיעה פטורה מעורלה",
+    "explanationTemplateHe": "עץ שנשתל שלא לצורך פרי (לגידור, לקורות וכד') עשוי להיות פטור מדין ערלה, בתנאי שלא שינה את ייעודו לאחר השתילה.",
+    "recommendationTemplateHe": "מומלץ לוודא שמדובר בנטיעה שייעודה אינו לפרי. במקרה של ספק, יש להתייעץ עם רב.",
+    "confidenceLevel": "medium",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
     "id": 4002,
     "moduleId": 1,
-    "templateCode": "ORL_UNCERTAIN_01",
+    "templateCode": "ORL_ABROAD_UNCERTAIN",
     "statusCode": "NEEDS_REVIEW",
-    "headlineHe": "נדרש בירור נוסף",
-    "explanationTemplateHe": "לפי הנתונים, אין מספיק ודאות כדי לקבוע מצב ברור של עורלה, במיוחד סביב פרטי ההעברה או גוש האדמה.",
-    "recommendationTemplateHe": "מומלץ להשלים פרטים חסרים או להתייעץ עם רב לפני שימוש בפרי.",
-    "confidenceLevel": "medium",
-    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה."
+    "headlineHe": "נדרש בירור נוסף — נטיעה בחו״ל",
+    "explanationTemplateHe": "בחו״ל דין ערלה הוא הלכה למשה מסיני, ויש הבדלים בהחלת הדין בהתאם לסוג העץ ולנסיבות. יש צורך בבירור נוסף.",
+    "recommendationTemplateHe": "מומלץ להתייעץ עם רב מוסמך לגבי החלת דין ערלה בחו״ל.",
+    "confidenceLevel": "low",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
     "id": 4003,
     "moduleId": 1,
-    "templateCode": "ORL_ACTIVE_01",
-    "statusCode": "ORLAH_ACTIVE",
-    "headlineHe": "ייתכן שהצמח נמצא בתקופת עורלה",
-    "explanationTemplateHe": "לפי התאריך והנתונים שהוזנו, ייתכן שהצמח עדיין בתוך שנות עורלה.",
-    "recommendationTemplateHe": "אין להשתמש בפרי לפני בירור התאריך ההלכתי המדויק וסיום התקופה.",
-    "confidenceLevel": "medium",
-    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה."
+    "templateCode": "ORL_RESTART_NO_SOIL",
+    "statusCode": "ORLAH_RESTART",
+    "headlineHe": "מניין שנות ערלה מתחיל מחדש",
+    "explanationTemplateHe": "הצמח הועבר ללא גוש אדמה שלם המספיק לקיימו. במצב זה, מניין שלוש שנות הערלה מתחיל מחדש מתאריך ההעברה.",
+    "recommendationTemplateHe": "יש למנות שלוש שנות ערלה מתאריך ההעברה / נטיעה מחדש.",
+    "confidenceLevel": "high",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   },
   {
     "id": 4004,
     "moduleId": 1,
-    "templateCode": "ORL_PERMITTED_01",
-    "statusCode": "PERMITTED",
-    "headlineHe": "נראה שהצמח מותר",
-    "explanationTemplateHe": "לפי הנתונים שהוזנו, לא נמצאה כרגע אינדיקציה לבעיה פעילה של עורלה.",
-    "recommendationTemplateHe": "במקרה של שינוי בפרטי הנטיעה או ההעברה, כדאי לעדכן את הנתונים.",
+    "templateCode": "ORL_UNCERTAIN_TRANSFER",
+    "statusCode": "NEEDS_REVIEW",
+    "headlineHe": "נדרש בירור נוסף — פרטי העברה חסרים",
+    "explanationTemplateHe": "לא ברור האם ההעברה נעשתה עם גוש אדמה שלם כדין. מידע זה חיוני לקביעת מניין שנות הערלה.",
+    "recommendationTemplateHe": "מומלץ לברר את פרטי ההעברה ולהתייעץ עם רב.",
+    "confidenceLevel": "low",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4005,
+    "moduleId": 1,
+    "templateCode": "ORL_DELAY_REVIEW",
+    "statusCode": "NEEDS_REVIEW",
+    "headlineHe": "נדרש בירור — עיכוב בהעברה",
+    "explanationTemplateHe": "הצמח הועבר עם גוש אדמה, אך היה עיכוב בין העקירה לנטיעה. יש לבדוק האם העיכוב משפיע על המשך המניין.",
+    "recommendationTemplateHe": "מומלץ להתייעץ עם רב לגבי השלכות העיכוב בהעברה על מניין שנות הערלה.",
     "confidenceLevel": "medium",
-    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה."
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4006,
+    "moduleId": 1,
+    "templateCode": "ORL_CONTINUES_SOIL",
+    "statusCode": "ORLAH_CONTINUES",
+    "headlineHe": "מניין שנות הערלה ממשיך",
+    "explanationTemplateHe": "הצמח הועבר עם גוש אדמה שלם המספיק לקיימו, וללא עיכוב משמעותי. לפיכך, מניין שנות הערלה ממשיך מתאריך הנטיעה המקורי.",
+    "recommendationTemplateHe": "יש להמשיך למנות את שנות הערלה מתאריך הנטיעה הראשון.",
+    "confidenceLevel": "high",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4007,
+    "moduleId": 1,
+    "templateCode": "ORL_POT_ABROAD",
+    "statusCode": "POSSIBLY_EXEMPT",
+    "headlineHe": "ייתכן פטור — עציץ שאינו נקוב בחו״ל",
+    "explanationTemplateHe": "צמח בעציץ שאינו נקוב בחו״ל — יש דעות שפטור מערלה. הנושא שנוי במחלוקת.",
+    "recommendationTemplateHe": "מומלץ להתייעץ עם רב מוסמך.",
+    "confidenceLevel": "low",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4008,
+    "moduleId": 1,
+    "templateCode": "ORL_ACTIVE_ESTIMATED",
+    "statusCode": "ORLAH_ACTIVE_ESTIMATED",
+    "headlineHe": "ערלה חלה — התאריך משוער",
+    "explanationTemplateHe": "לפי התאריך המשוער שהוזן, הצמח נמצא בתקופת שנות ערלה. שימו לב שהתאריך אינו מדויק, ולכן ייתכן שוני בתוצאה.",
+    "recommendationTemplateHe": "מומלץ לנסות לברר את התאריך המדויק. אם לא ניתן — יש ללכת לחומרה ולהוסיף מרווח ביטחון.",
+    "confidenceLevel": "medium",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4009,
+    "moduleId": 1,
+    "templateCode": "ORL_ACTIVE_STANDARD",
+    "statusCode": "ORLAH_ACTIVE",
+    "headlineHe": "ערלה חלה",
+    "explanationTemplateHe": "לפי הנתונים שהוזנו, הצמח נשתל לצורך פרי בארץ ישראל כשתילה חדשה. דין ערלה חל ויש למנות שלוש שנות ערלה מתאריך הנטיעה.",
+    "recommendationTemplateHe": "אין לאכול מפרי העץ עד תום שלוש שנות ערלה. בשנה הרביעית — פירות נטע רבעי.",
+    "confidenceLevel": "high",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
+  },
+  {
+    "id": 4010,
+    "moduleId": 1,
+    "templateCode": "ORL_ACTIVE_DEFAULT",
+    "statusCode": "ORLAH_ACTIVE",
+    "headlineHe": "ערלה חלה — חישוב כללי",
+    "explanationTemplateHe": "לפי הנתונים שהוזנו, דין ערלה חל. יש למנות שלוש שנות ערלה.",
+    "recommendationTemplateHe": "אין לאכול מפרי העץ עד תום שלוש שנות ערלה. במקרה של ספק, יש להתייעץ עם רב.",
+    "confidenceLevel": "medium",
+    "disclaimerHe": "המידע באתר נועד לסיוע כללי בלבד ואינו מהווה פסק הלכה. מומלץ להתייעץ עם רב מוסמך."
   }
 ]

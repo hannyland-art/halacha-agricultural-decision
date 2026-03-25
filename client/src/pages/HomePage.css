@@ -3,8 +3,9 @@
    =========================== */
 
 .hero {
-  background: linear-gradient(135deg, var(--color-primary-lighter) 0%, #f1f8e9 50%, #fffde7 100%);
-  padding: 64px 0;
+  /*background: linear-gradient(135deg, var(--color-primary-lighter) 0%, #f1f8e9 50%, #fffde7 100%);*/
+  background: linear-gradient(120deg, #353535 0%, #f0f3ec 50%, #f5f2c8 100%);
+  padding: 14px 0;
   overflow: hidden;
 }
 
@@ -45,14 +46,19 @@
 }
 
 .hero-illustration {
-  width: 200px;
-  height: 200px;
-  background: rgba(46, 125, 50, 0.08);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-primary);
+  width: 360px;
+  height: 220px;
+  border-radius: 88px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(46, 125, 50, 0.18);
+  border: 3px solid rgba(46, 125, 50, 0.12);
+}
+
+.hero-grove-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ===========================
@@ -137,6 +143,14 @@
   line-height: 1.7;
 }
 
+.module-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
 .module-inactive {
   opacity: 0.6;
 }
@@ -192,12 +206,8 @@
   }
 
   .hero-illustration {
-    width: 140px;
-    height: 140px;
-  }
-
-  .hero-illustration svg {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    max-width: 320px;
+    height: 180px;
   }
 }

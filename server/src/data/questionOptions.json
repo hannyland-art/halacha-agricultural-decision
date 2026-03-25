@@ -1,35 +1,98 @@
 [
-  { "id": 1001, "questionId": 102, "optionValue": "lemon", "optionLabelHe": "לימון", "optionOrder": 1, "isActive": true },
-  { "id": 1002, "questionId": 102, "optionValue": "olive", "optionLabelHe": "זית", "optionOrder": 2, "isActive": true },
-  { "id": 1003, "questionId": 102, "optionValue": "apple", "optionLabelHe": "תפוח", "optionOrder": 3, "isActive": true },
-  { "id": 1004, "questionId": 102, "optionValue": "pomegranate", "optionLabelHe": "רימון", "optionOrder": 4, "isActive": true },
-  { "id": 1005, "questionId": 102, "optionValue": "grape", "optionLabelHe": "גפן", "optionOrder": 5, "isActive": true },
-  { "id": 1006, "questionId": 102, "optionValue": "other", "optionLabelHe": "אחר", "optionOrder": 6, "isActive": true },
+  { "id": 1001, "questionId": 102, "optionValue": "exact", "optionLabelHe": "תאריך מדויק", "optionOrder": 1, "isActive": true },
+  { "id": 1002, "questionId": 102, "optionValue": "estimated", "optionLabelHe": "תאריך משוער", "optionOrder": 2, "isActive": true },
 
-  { "id": 1010, "questionId": 104, "optionValue": "nursery", "optionLabelHe": "משתלה", "optionOrder": 1, "isActive": true },
-  { "id": 1011, "questionId": 104, "optionValue": "seed", "optionLabelHe": "זרע", "optionOrder": 2, "isActive": true },
-  { "id": 1012, "questionId": 104, "optionValue": "pot_transfer", "optionLabelHe": "העברה מעציץ", "optionOrder": 3, "isActive": true },
-  { "id": 1013, "questionId": 104, "optionValue": "ground_transfer", "optionLabelHe": "העברה מקרקע", "optionOrder": 4, "isActive": true },
-  { "id": 1014, "questionId": 104, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 5, "isActive": true },
+  { "id": 1010, "questionId": 103, "optionValue": "young_seedling", "optionLabelHe": "שתיל צעיר", "optionOrder": 1, "isActive": true },
+  { "id": 1011, "questionId": 103, "optionValue": "young_tree", "optionLabelHe": "אילן צעיר", "optionOrder": 2, "isActive": true },
+  { "id": 1012, "questionId": 103, "optionValue": "mature_tree", "optionLabelHe": "אילן בוגר", "optionOrder": 3, "isActive": true },
+  { "id": 1013, "questionId": 103, "optionValue": "cutting", "optionLabelHe": "ייחור", "optionOrder": 4, "isActive": true },
+  { "id": 1014, "questionId": 103, "optionValue": "graft", "optionLabelHe": "הרכבה", "optionOrder": 5, "isActive": true },
+  { "id": 1015, "questionId": 103, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 6, "isActive": true },
 
-  { "id": 1020, "questionId": 105, "optionValue": "ground", "optionLabelHe": "באדמה", "optionOrder": 1, "isActive": true },
-  { "id": 1021, "questionId": 105, "optionValue": "pot", "optionLabelHe": "בעציץ", "optionOrder": 2, "isActive": true },
-  { "id": 1022, "questionId": 105, "optionValue": "garden", "optionLabelHe": "בגינה", "optionOrder": 3, "isActive": true },
-  { "id": 1023, "questionId": 105, "optionValue": "balcony", "optionLabelHe": "במרפסת", "optionOrder": 4, "isActive": true },
-  { "id": 1024, "questionId": 105, "optionValue": "greenhouse", "optionLabelHe": "בחממה", "optionOrder": 5, "isActive": true },
+  { "id": 1020, "questionId": 104, "optionValue": "fruit", "optionLabelHe": "לפרי", "optionOrder": 1, "isActive": true },
+  { "id": 1021, "questionId": 104, "optionValue": "fencing", "optionLabelHe": "לגידור", "optionOrder": 2, "isActive": true },
+  { "id": 1022, "questionId": 104, "optionValue": "timber", "optionLabelHe": "לקורות", "optionOrder": 3, "isActive": true },
+  { "id": 1023, "questionId": 104, "optionValue": "ornamental", "optionLabelHe": "לנוי", "optionOrder": 4, "isActive": true },
+  { "id": 1024, "questionId": 104, "optionValue": "other", "optionLabelHe": "אחר", "optionOrder": 5, "isActive": true },
+  { "id": 1025, "questionId": 104, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 6, "isActive": true },
 
-  { "id": 1030, "questionId": 106, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
-  { "id": 1031, "questionId": 106, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
-  { "id": 1032, "questionId": 106, "optionValue": "unknown", "optionLabelHe": "לא יודע/ת", "optionOrder": 3, "isActive": true },
+  { "id": 1030, "questionId": 105, "optionValue": "israel", "optionLabelHe": "ארץ ישראל", "optionOrder": 1, "isActive": true },
+  { "id": 1031, "questionId": 105, "optionValue": "abroad", "optionLabelHe": "חו״ל", "optionOrder": 2, "isActive": true },
 
-  { "id": 1040, "questionId": 108, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
-  { "id": 1041, "questionId": 108, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
-  { "id": 1042, "questionId": 108, "optionValue": "unknown", "optionLabelHe": "לא יודע/ת", "optionOrder": 3, "isActive": true },
+  { "id": 1040, "questionId": 106, "optionValue": "new_planting", "optionLabelHe": "שתילה חדשה", "optionOrder": 1, "isActive": true },
+  { "id": 1041, "questionId": 106, "optionValue": "transfer", "optionLabelHe": "העברה", "optionOrder": 2, "isActive": true },
+  { "id": 1042, "questionId": 106, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
 
-  { "id": 1050, "questionId": 110, "optionValue": "israel", "optionLabelHe": "ארץ ישראל", "optionOrder": 1, "isActive": true },
-  { "id": 1051, "questionId": 110, "optionValue": "outside_israel", "optionLabelHe": "חו״ל", "optionOrder": 2, "isActive": true },
+  { "id": 1100, "questionId": 112, "optionValue": "israel", "optionLabelHe": "ארץ ישראל", "optionOrder": 1, "isActive": true },
+  { "id": 1101, "questionId": 112, "optionValue": "abroad", "optionLabelHe": "חו״ל", "optionOrder": 2, "isActive": true },
+  { "id": 1102, "questionId": 112, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
 
-  { "id": 1060, "questionId": 111, "optionValue": "high", "optionLabelHe": "בטוח מאוד", "optionOrder": 1, "isActive": true },
-  { "id": 1061, "questionId": 111, "optionValue": "medium", "optionLabelHe": "בטוח חלקית", "optionOrder": 2, "isActive": true },
-  { "id": 1062, "questionId": 111, "optionValue": "low", "optionLabelHe": "לא בטוח/ה", "optionOrder": 3, "isActive": true }
+  { "id": 1110, "questionId": 113, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1111, "questionId": 113, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1112, "questionId": 113, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1120, "questionId": 114, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1121, "questionId": 114, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1122, "questionId": 114, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1130, "questionId": 115, "optionValue": "ground", "optionLabelHe": "באדמה", "optionOrder": 1, "isActive": true },
+  { "id": 1131, "questionId": 115, "optionValue": "pot", "optionLabelHe": "בעציץ", "optionOrder": 2, "isActive": true },
+  { "id": 1132, "questionId": 115, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1140, "questionId": 116, "optionValue": "perforated", "optionLabelHe": "עציץ נקוב", "optionOrder": 1, "isActive": true },
+  { "id": 1141, "questionId": 116, "optionValue": "non_perforated", "optionLabelHe": "עציץ שאינו נקוב", "optionOrder": 2, "isActive": true },
+  { "id": 1142, "questionId": 116, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1150, "questionId": 117, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1151, "questionId": 117, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1152, "questionId": 117, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1160, "questionId": 118, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1161, "questionId": 118, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1162, "questionId": 118, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1200, "questionId": 121, "optionValue": "pot", "optionLabelHe": "עציץ", "optionOrder": 1, "isActive": true },
+  { "id": 1201, "questionId": 121, "optionValue": "bag", "optionLabelHe": "שקית / שק", "optionOrder": 2, "isActive": true },
+  { "id": 1202, "questionId": 121, "optionValue": "bare_root", "optionLabelHe": "שורש חשוף", "optionOrder": 3, "isActive": true },
+  { "id": 1203, "questionId": 121, "optionValue": "soil_block", "optionLabelHe": "גוש אדמה", "optionOrder": 4, "isActive": true },
+  { "id": 1204, "questionId": 121, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 5, "isActive": true },
+
+  { "id": 1210, "questionId": 122, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1211, "questionId": 122, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1212, "questionId": 122, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1220, "questionId": 123, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1221, "questionId": 123, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1222, "questionId": 123, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1230, "questionId": 125, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1231, "questionId": 125, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1232, "questionId": 125, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1240, "questionId": 126, "optionValue": "orlah_fruit", "optionLabelHe": "פירות ערלה", "optionOrder": 1, "isActive": true },
+  { "id": 1241, "questionId": 126, "optionValue": "permitted_fruit", "optionLabelHe": "פירות מותרים", "optionOrder": 2, "isActive": true },
+  { "id": 1242, "questionId": 126, "optionValue": "uncertain", "optionLabelHe": "לא ידוע / ספק", "optionOrder": 3, "isActive": true },
+
+  { "id": 1300, "questionId": 131, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1301, "questionId": 131, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1302, "questionId": 131, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1310, "questionId": 132, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1311, "questionId": 132, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1312, "questionId": 132, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1320, "questionId": 133, "optionValue": "ground", "optionLabelHe": "באדמה", "optionOrder": 1, "isActive": true },
+  { "id": 1321, "questionId": 133, "optionValue": "pot", "optionLabelHe": "בעציץ", "optionOrder": 2, "isActive": true },
+
+  { "id": 1330, "questionId": 134, "optionValue": "perforated", "optionLabelHe": "עציץ נקוב", "optionOrder": 1, "isActive": true },
+  { "id": 1331, "questionId": 134, "optionValue": "non_perforated", "optionLabelHe": "עציץ שאינו נקוב", "optionOrder": 2, "isActive": true },
+  { "id": 1332, "questionId": 134, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1340, "questionId": 135, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1341, "questionId": 135, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1342, "questionId": 135, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true },
+
+  { "id": 1350, "questionId": 136, "optionValue": "yes", "optionLabelHe": "כן", "optionOrder": 1, "isActive": true },
+  { "id": 1351, "questionId": 136, "optionValue": "no", "optionLabelHe": "לא", "optionOrder": 2, "isActive": true },
+  { "id": 1352, "questionId": 136, "optionValue": "unknown", "optionLabelHe": "לא ידוע", "optionOrder": 3, "isActive": true }
 ]

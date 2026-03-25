@@ -1,93 +1,141 @@
 /**
  * AI Parameter Extraction Service (Mock)
  * In production, this would call an LLM API.
- * For MVP, it uses keyword matching to extract structured parameters.
+ * For MVP, it uses keyword matching to extract structured parameters
+ * aligned with the updated Orlah question flow.
  */
 
-const PLANT_KEYWORDS = {
-  'לימון': 'lemon',
-  'lemon': 'lemon',
-  'זית': 'olive',
-  'olive': 'olive',
-  'תפוח': 'apple',
-  'apple': 'apple',
-  'רימון': 'pomegranate',
-  'pomegranate': 'pomegranate',
-  'גפן': 'grape',
-  'ענבים': 'grape',
-  'grape': 'grape',
+const SEEDLING_KEYWORDS = {
+  'שתיל צעיר': 'young_seedling',
+  'שתיל': 'young_seedling',
+  'אילן צעיר': 'young_tree',
+  'אילן בוגר': 'mature_tree',
+  'ייחור': 'cutting',
+  'הרכבה': 'graft',
 };
 
-const SOURCE_KEYWORDS = {
-  'משתלה': 'nursery',
-  'nursery': 'nursery',
-  'זרע': 'seed',
-  'seed': 'seed',
-  'שתיל': 'nursery',
+const REASON_KEYWORDS = {
+  'פרי': 'fruit',
+  'לפרי': 'fruit',
+  'לאכילה': 'fruit',
+  'גידור': 'fencing',
+  'לגידור': 'fencing',
+  'קורות': 'timber',
+  'לקורות': 'timber',
+  'נוי': 'ornamental',
+  'לנוי': 'ornamental',
 };
 
 const LOCATION_KEYWORDS = {
-  'גינה': 'garden',
+  'ארץ ישראל': 'israel',
+  'ישראל': 'israel',
+  'חו״ל': 'abroad',
+  'חול': 'abroad',
+  'חו"ל': 'abroad',
+};
+
+const GROUND_POT_KEYWORDS = {
   'אדמה': 'ground',
+  'קרקע': 'ground',
   'עציץ': 'pot',
-  'מרפסת': 'balcony',
-  'חממה': 'greenhouse',
 };
 
 function extractParameters(rawText) {
-  const text = rawText.toLowerCase ? rawText.toLowerCase() : rawText;
   const originalText = rawText;
   const extracted = {};
   const confidence = {};
 
-  // Extract plant type
-  for (const [keyword, value] of Object.entries(PLANT_KEYWORDS)) {
+  // Extract seedling type
+  for (const [keyword, value] of Object.entries(SEEDLING_KEYWORDS)) {
     if (originalText.includes(keyword)) {
-      extracted.plant_type = value;
-      confidence.plant_type = 0.95;
+      extracted.seedling_type = value;
+      confidence.seedling_type = 0.9;
       break;
     }
   }
 
-  // Extract source type
-  for (const [keyword, value] of Object.entries(SOURCE_KEYWORDS)) {
+  // Extract planting reason
+  for (const [keyword, value] of Object.entries(REASON_KEYWORDS)) {
     if (originalText.includes(keyword)) {
-      extracted.source_type = value;
-      confidence.source_type = 0.9;
+      extracted.planting_reason = value;
+      confidence.planting_reason = 0.85;
       break;
     }
   }
 
-  // Extract growth location
+  // Extract planting location (Israel / abroad)
   for (const [keyword, value] of Object.entries(LOCATION_KEYWORDS)) {
     if (originalText.includes(keyword)) {
-      extracted.growth_location = value;
-      confidence.growth_location = 0.85;
+      extracted.planting_location = value;
+      confidence.planting_location = 0.95;
       break;
     }
   }
 
-  // Extract transferred
-  if (originalText.includes('הועבר') || originalText.includes('העברה') || originalText.includes('שתלתי')) {
-    extracted.transferred = true;
-    confidence.transferred = 0.88;
-  }
-
-  // Extract sustaining soil block
-  if (originalText.includes('גוש אדמה')) {
-    if (originalText.includes('לא בטוח') || originalText.includes('לא יודע')) {
-      extracted.sustaining_soil_block = 'unknown';
-      confidence.sustaining_soil_block = 0.7;
-    } else if (originalText.includes('כן') || originalText.includes('היה גוש')) {
-      extracted.sustaining_soil_block = 'yes';
-      confidence.sustaining_soil_block = 0.8;
+  // Extract ground vs pot
+  for (const [keyword, value] of Object.entries(GROUND_POT_KEYWORDS)) {
+    if (originalText.includes(keyword)) {
+      extracted.current_ground_or_pot = value;
+      confidence.current_ground_or_pot = 0.85;
+      break;
     }
   }
 
-  // Detect fruit tree
-  if (originalText.includes('עץ') || originalText.includes('פרי')) {
-    extracted.fruit_tree = true;
-    confidence.fruit_tree = 0.9;
+  // Detect transfer
+  if (originalText.includes('הועבר') || originalText.includes('העברה') || originalText.includes('העתקה')) {
+    extracted.is_transfer = 'transfer';
+    confidence.is_transfer = 0.88;
+  } else if (originalText.includes('שתילה חדשה') || originalText.includes('שתלתי')) {
+    extracted.is_transfer = 'new_planting';
+    confidence.is_transfer = 0.85;
+  }
+
+  // Detect soil block
+  if (originalText.includes('גוש אדמה')) {
+    if (originalText.includes('לא בטוח') || originalText.includes('לא יודע')) {
+      extracted.transfer_soil_block_intact = 'unknown';
+      confidence.transfer_soil_block_intact = 0.7;
+    } else if (originalText.includes('כן') || originalText.includes('שלם') || originalText.includes('היה גוש')) {
+      extracted.transfer_soil_block_intact = 'yes';
+      confidence.transfer_soil_block_intact = 0.8;
+    } else if (originalText.includes('לא') || originalText.includes('ללא')) {
+      extracted.transfer_soil_block_intact = 'no';
+      confidence.transfer_soil_block_intact = 0.8;
+    }
+  }
+
+  // Detect perforated pot
+  if (originalText.includes('עציץ נקוב')) {
+    extracted.current_pot_type = 'perforated';
+    confidence.current_pot_type = 0.9;
+  } else if (originalText.includes('עציץ') && (originalText.includes('לא נקוב') || originalText.includes('אינו נקוב'))) {
+    extracted.current_pot_type = 'non_perforated';
+    confidence.current_pot_type = 0.9;
+  }
+
+  // Detect date type
+  if (originalText.includes('בערך') || originalText.includes('משוער') || originalText.includes('לא מדויק') || originalText.includes('בקירוב')) {
+    extracted.date_type = 'estimated';
+    confidence.date_type = 0.85;
+  } else if (originalText.includes('מדויק') || originalText.includes('בדיוק')) {
+    extracted.date_type = 'exact';
+    confidence.date_type = 0.9;
+  }
+
+  // Try to extract a date (pattern: dd/mm/yyyy or yyyy-mm-dd)
+  const datePatternSlash = /(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})/;
+  const datePatternIso = /(\d{4})-(\d{2})-(\d{2})/;
+  let match = originalText.match(datePatternIso);
+  if (match) {
+    extracted.planting_date = match[0];
+    confidence.planting_date = 0.95;
+  } else {
+    match = originalText.match(datePatternSlash);
+    if (match) {
+      const [, day, month, year] = match;
+      extracted.planting_date = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+      confidence.planting_date = 0.9;
+    }
   }
 
   return {
